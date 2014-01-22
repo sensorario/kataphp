@@ -60,7 +60,7 @@ class Game
         return $playerOneChoice->winVersus($playerTwoChoice);
     }
 
-    public function gameIsTied()
+    public function isGameTied()
     {
         return $this->getPlayerOne()->getChoice() == $this->getPlayerTwo()->getChoice();
     }

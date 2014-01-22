@@ -125,7 +125,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $game = new \PaperRockScissors\Game();
         $game->addPlayer(new \PaperRockScissors\Player($playerOne));
         $game->addPlayer(new \PaperRockScissors\Player($playerTwo));
-        $this->assertEquals($expected, $game->gameIsTied());
+        $this->assertEquals($expected, $game->isGameTied());
     }
 
     public function gamesTied()
