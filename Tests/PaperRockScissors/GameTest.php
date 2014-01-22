@@ -43,7 +43,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException Exception
      */
-    public function testInvalidArgumentTwo()
+    public function testAddPlayerDontAcceptTooManyArguments()
     {
         $game = new \PaperRockScissors\Game();
         $stub = $this->getMockBuilder('PaperRockScissors\Player')
