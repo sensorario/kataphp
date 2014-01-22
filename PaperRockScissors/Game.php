@@ -8,7 +8,7 @@ class Game
 
     public function hasNoPlayers()
     {
-        return count($this->players) == 0;
+        return $this->getNumPlayersCount() == 0;
     }
 
     public function addPlayer(Player $player)
@@ -22,11 +22,16 @@ class Game
 
     public function hasTwoPlayers()
     {
-        return count($this->players) == 2;
+        return $this->getNumPlayersCount() == 2;
     }
 
     public function hasPlayers()
     {
         return !$this->hasNoPlayers();
+    }
+
+    private function getNumPlayersCount()
+    {
+        return count($this->players);
     }
 }
