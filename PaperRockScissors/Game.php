@@ -13,8 +13,10 @@ class Game
 
     public function addPlayer(Player $player)
     {
-        if (func_num_args() != 1) {
-            throw new \Exception;
+        if (isset($this->players[0])) {
+            if ($player === $this->players[0]) {
+                throw new SamePlayerException();
+            }
         }
 
         array_push($this->players, $player);
@@ -33,5 +35,28 @@ class Game
     private function getNumPlayersCount()
     {
         return count($this->players);
+    }
+
+    /**
+     * @return Player
+     */
+    public function getPlayerOne()
+    {
+        return $this->players[0];
+    }
+
+    /**
+     * @return Player
+     */
+    public function getPlayerTwo()
+    {
+        return $this->players[1];
+    }
+
+    public function isPlayerOneWinner()
+    {
+        $playerOneChoice = $this->getPlayerOne()->getChoice();
+        $playerTwoChoice = $this->getPlayerTwo()->getChoice();
+        return $playerOneChoice->winVersus($playerTwoChoice);
     }
 }

@@ -4,10 +4,15 @@ namespace PaperRockScissors;
 
 class Player
 {
+    private $choice;
+
     public function __construct(IChoice $paper)
     {
-        if (!($paper instanceof IChoice)) {
-            throw new \Exception();
-        }
+        $this->choice = $paper;
+    }
+
+    public function getChoice()
+    {
+        return $this->choice;
     }
 }

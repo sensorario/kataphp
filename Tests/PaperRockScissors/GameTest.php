@@ -31,18 +31,15 @@ class GameTest extends \PHPUnit_Framework_TestCase
     public function testHasTwoPlayers()
     {
         $game = new \PaperRockScissors\Game();
-        $stub = $this->getMockBuilder('PaperRockScissors\Player')
+        $playerOne = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game->addPlayer($stub);
-        $game->addPlayer($stub);
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $game->addPlayer($playerOne);
+        $game->addPlayer($playerTwo);
         $this->assertTrue($game->hasTwoPlayers());
-    }
-
-    public function testHasPlayerMethodExists()
-    {
-        $game = new \PaperRockScissors\Game();
-        $this->assertTrue(method_exists($game, 'hasPlayers'));
     }
 
     public function testHasTwoPlayerReturnFalseByDefault()
@@ -61,7 +58,10 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($game->hasTwoPlayers());
     }
 
-    public function testHasTwoPlayerReturnTrueWithTwoPlayer()
+    /**
+     * @expectedException PaperRockScissors\SamePlayerException
+     */
+    public function testPlayersMustBeDifferent()
     {
         $game = new \PaperRockScissors\Game();
         $stub = $this->getMockBuilder('PaperRockScissors\Player')
@@ -69,6 +69,76 @@ class GameTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $game->addPlayer($stub);
         $game->addPlayer($stub);
-        $this->assertTrue($game->hasTwoPlayers());
+    }
+
+    public function testGetPlayerOne()
+    {
+        $player = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer($player);
+        $this->assertEquals($player, $game->getPlayerOne());
+    }
+
+    public function testGetPlayerTwo()
+    {
+        $player = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer($player);
+        $game->addPlayer($playerTwo);
+        $this->assertEquals($playerTwo, $game->getPlayerTwo());
+    }
+
+    public function testPlayersAreDifferent()
+    {
+        $player = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer($player);
+        $game->addPlayer($playerTwo);
+        $this->assertFalse($game->getPlayerOne() === $game->getPlayerTwo());
+    }
+
+    public function testPlayerOneWithPaperWinsVersusPlayerTwoWithRock()
+    {
+        $rock = $this->getMockBuilder('PaperRockScissors\Rock')
+            ->getMock();
+
+        $paper = $this->getMockBuilder('PaperRockScissors\Paper')
+            ->setMethods(['winVersus'])
+            ->getMock();
+        $paper->expects($this->any())
+            ->method('winVersus')
+            ->with($rock)
+            ->will($this->returnValue(true));
+
+        $playerOneWithPaper = $this->getMockBuilder('PaperRockScissors\Player')
+            ->setConstructorArgs([$paper])
+            ->getMock();
+        $playerOneWithPaper->expects($this->any())
+            ->method('getChoice')
+            ->will($this->returnValue($paper));
+
+        $playerTwoWithRock = $this->getMockBuilder('PaperRockScissors\Player')
+            ->setConstructorArgs([$rock])
+            ->getMock();
+        $playerTwoWithRock->expects($this->any())
+            ->method('getChoice')
+            ->will($this->returnValue($rock));
+
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer($playerOneWithPaper);
+        $game->addPlayer($playerTwoWithRock);
+        $this->assertTrue($game->isPlayerOneWinner());
     }
 }

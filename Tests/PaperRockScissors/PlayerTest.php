@@ -7,7 +7,7 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidArgument()
     {
-        $player = new PaperRockScissors\Player(33);
+        new PaperRockScissors\Player(33);
     }
 
     public function testValidPaperArgument()
@@ -15,6 +15,13 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
         $iPaper = $this
             ->getMockBuilder('PaperRockScissors\IChoice')
             ->getMock();
-        $player = new PaperRockScissors\Player($iPaper);
+        new PaperRockScissors\Player($iPaper);
+    }
+
+    public function testGetChoice()
+    {
+        $paper = new \PaperRockScissors\Paper();
+        $player = new \PaperRockScissors\Player($paper);
+        $this->assertTrue($player->getChoice() === $paper);
     }
 }
