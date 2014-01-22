@@ -34,9 +34,4 @@ class Game
     {
         return count($this->players);
     }
-
-    public function isPlayerOneWinner()
-    {
-        
-    }
 }
