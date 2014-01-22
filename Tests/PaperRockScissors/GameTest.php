@@ -111,34 +111,31 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testPlayerOneWithPaperWinsVersusPlayerTwoWithRock()
     {
-        $rock = $this->getMockBuilder('PaperRockScissors\Rock')
-            ->getMock();
-
-        $paper = $this->getMockBuilder('PaperRockScissors\Paper')
-            ->setMethods(['winVersus'])
-            ->getMock();
-        $paper->expects($this->any())
-            ->method('winVersus')
-            ->with($rock)
-            ->will($this->returnValue(true));
-
-        $playerOneWithPaper = $this->getMockBuilder('PaperRockScissors\Player')
-            ->setConstructorArgs([$paper])
-            ->getMock();
-        $playerOneWithPaper->expects($this->any())
-            ->method('getChoice')
-            ->will($this->returnValue($paper));
-
-        $playerTwoWithRock = $this->getMockBuilder('PaperRockScissors\Player')
-            ->setConstructorArgs([$rock])
-            ->getMock();
-        $playerTwoWithRock->expects($this->any())
-            ->method('getChoice')
-            ->will($this->returnValue($rock));
-
         $game = new \PaperRockScissors\Game();
-        $game->addPlayer($playerOneWithPaper);
-        $game->addPlayer($playerTwoWithRock);
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Rock()));
         $this->assertTrue($game->isPlayerOneWinner());
+    }
+
+    /**
+     * @dataProvider gamesTied
+     */
+    public function testIsGameTied($playerOne, $playerTwo, $expected)
+    {
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer(new \PaperRockScissors\Player($playerOne));
+        $game->addPlayer(new \PaperRockScissors\Player($playerTwo));
+        $this->assertEquals($expected, $game->gameIsTied());
+    }
+
+    public function gamesTied()
+    {
+        return [
+            [new \PaperRockScissors\Paper(), new \PaperRockScissors\Paper(), true],
+            [new \PaperRockScissors\Rock(), new \PaperRockScissors\Rock(), true],
+            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Rock(), false],
+            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Scissors(), true],
+            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Paper(), false],
+        ];
     }
 }

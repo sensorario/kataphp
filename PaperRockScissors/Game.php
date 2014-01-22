@@ -59,4 +59,9 @@ class Game
         $playerTwoChoice = $this->getPlayerTwo()->getChoice();
         return $playerOneChoice->winVersus($playerTwoChoice);
     }
+
+    public function gameIsTied()
+    {
+        return $this->getPlayerOne()->getChoice() == $this->getPlayerTwo()->getChoice();
+    }
 }
