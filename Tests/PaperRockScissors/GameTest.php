@@ -91,4 +91,38 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $game->addPlayer($stub);
         $this->assertTrue($game->hasTwoPlayers());
     }
+
+    public function testGameHasMethodIsPlayerOneWinner()
+    {
+        $game = new \PaperRockScissors\Game();
+        $this->assertTrue(method_exists($game, 'isPlayerOneWinner'));
+    }
+
+//    public function testPlayerOneWins()
+//    {
+//        $game = new \PaperRockScissors\Game();
+//
+//        $paper = $this->getMockBuilder('PaperRockScissors\Paper')
+//            ->getMock();
+//
+//        $rock = $this->getMockBuilder('PaperRockScissors\Rock')
+//            ->getMock();
+//
+//        $playerOne = $this->getMockBuilder('PaperRockScissors\Player')
+//            ->setMethods(['getChoice'])
+//            ->getMock();
+//        $playerOne->expects($this->once())
+//            ->method('getChoice')
+//            ->will($this->returnValue($paper));
+//
+//        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+//            ->setMethods(['getChoice'])
+//            ->getMock();
+//        $playerTwo->expects($this->once())
+//            ->method('getChoice')
+//            ->will($this->returnValue($rock));
+//
+//        $game->addPlayer($playerOne);
+//        $game->addPlayer($playerTwo);
+//    }
 }
