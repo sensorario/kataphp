@@ -9,15 +9,6 @@ class GameTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException PHPUnit_Framework_Error
-     */
-    public function testInvalidArgument()
-    {
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer(33);
-    }
-
-    /**
      * @expectedException Exception
      */
     public function testAddPlayerDontAcceptTooManyArguments()
