@@ -22,7 +22,7 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($player->getChoice() === $paper);
     }
 
-    public function testChoiceClass()
+    public function testPlayerChoiceIsInstanceOfChoice()
     {
         $paper = new Paper();
         $player = new Player($paper);
