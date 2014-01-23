@@ -8,17 +8,6 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($game->hasNoPlayers());
     }
 
-    /**
-     * @expectedException Exception
-     */
-    public function testAddPlayerDontAcceptTooManyArguments()
-    {
-        $game = new \PaperRockScissors\Game();
-        $stub = $this->getMockBuilder('PaperRockScissors\Player')
-            ->getMock();
-        $game->addPlayer($stub, 33, 33);
-    }
-
     public function testHasTwoPlayers()
     {
         $game = new \PaperRockScissors\Game();
@@ -108,6 +97,14 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($game->isPlayerOneWinner());
     }
 
+    public function testNotIsPlayerOneWinner()
+    {
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Rock()));
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
+        $this->assertFalse($game->isPlayerOneWinner());
+    }
+
     /**
      * @dataProvider gamesTied
      */
@@ -128,5 +125,20 @@ class GameTest extends \PHPUnit_Framework_TestCase
             [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Scissors(), true],
             [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Paper(), false],
         ];
+    }
+
+    public function testNumPlayerCount()
+    {
+        $game = new \PaperRockScissors\Game();
+        $numPlayerBegin = $game->getNumPlayersCount();
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
+        $this->assertEquals($numPlayerBegin + 1, $game->getNumPlayersCount());
+    }
+
+    public function testHasPlayers()
+    {
+        $game = new \PaperRockScissors\Game();
+        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
+        $this->assertFalse($game->hasNoPlayers());
     }
 }
