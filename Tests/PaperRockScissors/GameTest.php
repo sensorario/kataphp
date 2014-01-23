@@ -1,41 +1,50 @@
 <?php
 
+use PaperRockScissors\Game;
+use PaperRockScissors\Player;
+use PaperRockScissors\Paper;
+use PaperRockScissors\Rock;
+use PaperRockScissors\Scissors;
+
 class GameTest extends \PHPUnit_Framework_TestCase
 {
+    private $game;
+
+    public function setUp()
+    {
+        $this->game = new Game();
+    }
+
     public function testHasNoPlayersReturnTrueByDefault()
     {
-        $game = new \PaperRockScissors\Game();
-        $this->assertTrue($game->hasNoPlayers());
+        $this->assertTrue($this->game->hasNoPlayers());
     }
 
     public function testHasTwoPlayers()
     {
-        $game = new \PaperRockScissors\Game();
         $playerOne = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game->addPlayer($playerOne);
-        $game->addPlayer($playerTwo);
-        $this->assertTrue($game->hasTwoPlayers());
+        $this->game->addPlayer($playerOne);
+        $this->game->addPlayer($playerTwo);
+        $this->assertTrue($this->game->hasTwoPlayers());
     }
 
     public function testHasTwoPlayerReturnFalseByDefault()
     {
-        $game = new \PaperRockScissors\Game();
-        $this->assertFalse($game->hasTwoPlayers());
+        $this->assertFalse($this->game->hasTwoPlayers());
     }
 
     public function testHasTwoPlayerReturnFalseWithOnePlayer()
     {
-        $game = new \PaperRockScissors\Game();
         $stub = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game->addPlayer($stub);
-        $this->assertFalse($game->hasTwoPlayers());
+        $this->game->addPlayer($stub);
+        $this->assertFalse($this->game->hasTwoPlayers());
     }
 
     /**
@@ -43,12 +52,11 @@ class GameTest extends \PHPUnit_Framework_TestCase
      */
     public function testPlayersMustBeDifferent()
     {
-        $game = new \PaperRockScissors\Game();
         $stub = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game->addPlayer($stub);
-        $game->addPlayer($stub);
+        $this->game->addPlayer($stub);
+        $this->game->addPlayer($stub);
     }
 
     public function testGetPlayerOne()
@@ -56,9 +64,8 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $player = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer($player);
-        $this->assertEquals($player, $game->getPlayerOne());
+        $this->game->addPlayer($player);
+        $this->assertEquals($player, $this->game->getPlayerOne());
     }
 
     public function testGetPlayerTwo()
@@ -69,10 +76,9 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer($player);
-        $game->addPlayer($playerTwo);
-        $this->assertEquals($playerTwo, $game->getPlayerTwo());
+        $this->game->addPlayer($player);
+        $this->game->addPlayer($playerTwo);
+        $this->assertEquals($playerTwo, $this->game->getPlayerTwo());
     }
 
     public function testPlayersAreDifferent()
@@ -83,26 +89,23 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer($player);
-        $game->addPlayer($playerTwo);
-        $this->assertFalse($game->getPlayerOne() === $game->getPlayerTwo());
+        $this->game->addPlayer($player);
+        $this->game->addPlayer($playerTwo);
+        $this->assertFalse($this->game->getPlayerOne() === $this->game->getPlayerTwo());
     }
 
     public function testPlayerOneWithPaperWinsVersusPlayerTwoWithRock()
     {
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Rock()));
-        $this->assertTrue($game->isPlayerOneWinner());
+        $this->game->addPlayer(new Player(new Paper()));
+        $this->game->addPlayer(new Player(new Rock()));
+        $this->assertTrue($this->game->isPlayerOneWinner());
     }
 
     public function testNotIsPlayerOneWinner()
     {
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Rock()));
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
-        $this->assertFalse($game->isPlayerOneWinner());
+        $this->game->addPlayer(new Player(new Rock()));
+        $this->game->addPlayer(new Player(new Paper()));
+        $this->assertFalse($this->game->isPlayerOneWinner());
     }
 
     /**
@@ -110,35 +113,32 @@ class GameTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsGameTied($playerOne, $playerTwo, $expected)
     {
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer(new \PaperRockScissors\Player($playerOne));
-        $game->addPlayer(new \PaperRockScissors\Player($playerTwo));
-        $this->assertEquals($expected, $game->isGameTied());
+        $this->game->addPlayer(new Player($playerOne));
+        $this->game->addPlayer(new Player($playerTwo));
+        $this->assertEquals($expected, $this->game->isGameTied());
     }
 
     public function gamesTied()
     {
         return [
-            [new \PaperRockScissors\Paper(), new \PaperRockScissors\Paper(), true],
-            [new \PaperRockScissors\Rock(), new \PaperRockScissors\Rock(), true],
-            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Rock(), false],
-            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Scissors(), true],
-            [new \PaperRockScissors\Scissors(), new \PaperRockScissors\Paper(), false],
+            [new Paper(), new Paper(), true],
+            [new Rock(), new Rock(), true],
+            [new Scissors(), new Rock(), false],
+            [new Scissors(), new Scissors(), true],
+            [new Scissors(), new Paper(), false],
         ];
     }
 
     public function testNumPlayerCount()
     {
-        $game = new \PaperRockScissors\Game();
-        $numPlayerBegin = $game->getNumberOgPlayers();
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
-        $this->assertEquals($numPlayerBegin + 1, $game->getNumberOgPlayers());
+        $numPlayerBegin = $this->game->getNumberOgPlayers();
+        $this->game->addPlayer(new Player(new Paper()));
+        $this->assertEquals($numPlayerBegin + 1, $this->game->getNumberOgPlayers());
     }
 
     public function testHasPlayers()
     {
-        $game = new \PaperRockScissors\Game();
-        $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
-        $this->assertFalse($game->hasNoPlayers());
+        $this->game->addPlayer(new Player(new Paper()));
+        $this->assertFalse($this->game->hasNoPlayers());
     }
 }

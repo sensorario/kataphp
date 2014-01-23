@@ -1,13 +1,16 @@
 <?php
 
+use PaperRockScissors\Paper;
+use PaperRockScissors\Player;
+
 class PlayerTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidPaperArgument()
     {
         $iPaper = $this
-            ->getMockBuilder('PaperRockScissors\IChoice')
+            ->getMockBuilder('PaperRockScissors\Choice')
             ->getMock();
-        new PaperRockScissors\Player($iPaper);
+        new Player($iPaper);
     }
 
     public function testGetChoice()
@@ -15,14 +18,14 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
         $paper = $this
             ->getMockBuilder('PaperRockScissors\Paper')
             ->getMock();
-        $player = new \PaperRockScissors\Player($paper);
+        $player = new Player($paper);
         $this->assertTrue($player->getChoice() === $paper);
     }
 
     public function testChoiceClass()
     {
-        $paper = new \PaperRockScissors\Paper();
-        $player = new \PaperRockScissors\Player($paper);
+        $paper = new Paper();
+        $player = new Player($paper);
         $this->assertInstanceOf('PaperRockScissors\Paper', $player->getChoice());
     }
 }
