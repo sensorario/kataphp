@@ -7,7 +7,7 @@ class ChoicesTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider choices
      */
-    public function testPaperWinVersusRock($playerOneChoice, $playerTwoChoice, $winFirst)
+    public function testIfPlayerOnesChoiceWins($playerOneChoice, $playerTwoChoice, $winFirst)
     {
         $this->assertEquals($winFirst, $playerOneChoice->winVersus($playerTwoChoice));
     }
