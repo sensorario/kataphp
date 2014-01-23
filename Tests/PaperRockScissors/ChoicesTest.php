@@ -20,7 +20,7 @@ class ChoicesTest extends \PHPUnit_Framework_TestCase
             [new Scissors(), new Paper(), true],
             [new Paper(), new Scissors(), false],
             [new Scissors(), new Rock(), false],
-            [new Rock(), new Paper(), false]
+            [new Rock(), new Paper(), false],
         ];
     }
 }
