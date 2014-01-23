@@ -2,9 +2,9 @@
 
 namespace PaperRockScissors;
 
-class Scissors implements IChoice
+class Scissors implements Choice
 {
-    public function winVersus(IChoice $choice)
+    public function winVersus(Choice $choice)
     {
         return $choice instanceof Paper;
     }
