@@ -6,11 +6,14 @@ class Player
 {
     private $choice;
 
-    public function __construct(IChoice $paper)
+    public function __construct(IChoice $choice)
     {
-        $this->choice = $paper;
+        $this->choice = $choice;
     }
 
+    /**
+     * @return IChoice
+     */
     public function getChoice()
     {
         return $this->choice;

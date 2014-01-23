@@ -27,16 +27,6 @@ class Game
         return $this->getNumPlayersCount() == 2;
     }
 
-    public function hasPlayers()
-    {
-        return !$this->hasNoPlayers();
-    }
-
-    private function getNumPlayersCount()
-    {
-        return count($this->players);
-    }
-
     /**
      * @return Player
      */
@@ -63,5 +53,10 @@ class Game
     public function isGameTied()
     {
         return $this->getPlayerOne()->getChoice() == $this->getPlayerTwo()->getChoice();
+    }
+
+    public function getNumPlayersCount()
+    {
+        return count($this->players);
     }
 }
