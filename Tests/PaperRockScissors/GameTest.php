@@ -130,9 +130,9 @@ class GameTest extends \PHPUnit_Framework_TestCase
     public function testNumPlayerCount()
     {
         $game = new \PaperRockScissors\Game();
-        $numPlayerBegin = $game->getNumPlayersCount();
+        $numPlayerBegin = $game->getNumberOgPlayers();
         $game->addPlayer(new \PaperRockScissors\Player(new \PaperRockScissors\Paper()));
-        $this->assertEquals($numPlayerBegin + 1, $game->getNumPlayersCount());
+        $this->assertEquals($numPlayerBegin + 1, $game->getNumberOgPlayers());
     }
 
     public function testHasPlayers()
