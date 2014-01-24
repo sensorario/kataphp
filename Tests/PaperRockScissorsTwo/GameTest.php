@@ -2,7 +2,7 @@
 
 namespace PaperRockScissorsTwo;
 
-class PaperRockScissorsTwoGameTest extends \PHPUnit_Framework_TestCase
+class GameTest extends \PHPUnit_Framework_TestCase
 {
     use DataStructure\MatrixGames;
 
