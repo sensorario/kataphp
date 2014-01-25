@@ -15,8 +15,19 @@ class Player
         $this->choice = $choice;
     }
 
-    public function buildFromChoice($choice)
+    /**
+     * @return Player
+     */
+    public function createFromChoice($choice)
     {
+        $scissors = Player::CHOICE_SCISSORS;
+        $paper = Player::CHOICE_PAPER;
+        $rock = Player::CHOICE_ROCK;
+        $options = array($scissors, $paper, $rock);
+        if (!in_array($choice, $options)) {
+            throw new InvalidArgumentException;
+        }
+
         return new Player($choice);
     }
 

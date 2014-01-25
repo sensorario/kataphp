@@ -8,14 +8,22 @@ class PlayerFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testPlayerEntity()
     {
-        $tizio = Player::buildFromChoice(Player::CHOICE_PAPER);
+        $tizio = Player::createFromChoice(Player::CHOICE_PAPER);
         $this->assertEquals(get_class($tizio), 'PaperRockScissors\Implementation03\Player');
     }
 
     public function testPlayerEntityReturnsChoice()
     {
-        $tizio = Player::buildFromChoice(Player::CHOICE_PAPER);
+        $tizio = Player::createFromChoice(Player::CHOICE_PAPER);
         $this->assertEquals(Player::CHOICE_PAPER, $tizio->getChoice());
+    }
+
+    /**
+     * @expectedException PaperRockScissors\Implementation03\InvalidArgumentException
+     */
+    public function testUnHapyPath()
+    {
+        Player::createFromChoice(234);
     }
 
     /**
@@ -23,8 +31,8 @@ class PlayerFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatch($first, $second, $expect)
     {
-        $tizio = Player::buildFromChoice($first);
-        $caio = Player::buildFromChoice($second);
+        $tizio = Player::createFromChoice($first);
+        $caio = Player::createFromChoice($second);
         $this->assertEquals($expect, $tizio->winVersus($caio));
     }
 
