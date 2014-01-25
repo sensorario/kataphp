@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\PaperRockScissors;
+
 use PaperRockScissors\Paper;
 use PaperRockScissors\Player;
 

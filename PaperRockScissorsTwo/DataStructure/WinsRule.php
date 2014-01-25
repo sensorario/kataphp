@@ -4,17 +4,10 @@ namespace PaperRockScissorsTwo\DataStructure;
 
 class WinsRule
 {
-    public static function with($tizioChoice, $caioChoice)
+    public function with($tizioSelection, $caioSelection)
     {
-        $wins = [
-            PlayerChoice::PAPER . PlayerChoice::ROCK,
-            PlayerChoice::ROCK . PlayerChoice::SCISSORS,
-            PlayerChoice::SCISSORS . PlayerChoice::PAPER
-        ];
-
-        return in_array(
-            $tizioChoice . $caioChoice,
-            $wins
-        );
+        return $tizioSelection == PlayerChoice::PAPER && $caioSelection == PlayerChoice::ROCK
+        || $tizioSelection == PlayerChoice::ROCK && $caioSelection == PlayerChoice::SCISSORS
+        || $tizioSelection == PlayerChoice::SCISSORS && $caioSelection == PlayerChoice::PAPER;
     }
 }

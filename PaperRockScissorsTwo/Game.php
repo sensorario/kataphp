@@ -24,10 +24,11 @@ class Game
 
     public function isWinnedBy(Player $player)
     {
-        $expectedWinner = $this->tizio === $player;
-        $tizioSelection = $this->tizio->hasSelected();
-        $caioSelection = $this->caio->hasSelected();
-        $tizioWinsVersusCaio = WinsRule::with($tizioSelection, $caioSelection);
-        return $tizioWinsVersusCaio && $expectedWinner;
+        return $player->winVersus($this->caio);
+    }
+
+    public function isLostBy(Player $caio)
+    {
+        return !$caio->winVersus($this->tizio);
     }
 }

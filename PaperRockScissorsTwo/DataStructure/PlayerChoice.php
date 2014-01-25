@@ -4,7 +4,7 @@ namespace PaperRockScissorsTwo\DataStructure;
 
 class PlayerChoice
 {
-    const PAPER = 'paper';
-    const SCISSORS = 'scissors';
-    const ROCK = 'rock';
+    const PAPER = 1;
+    const SCISSORS = 2;
+    const ROCK = 3;
 }

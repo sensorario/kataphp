@@ -1,8 +1,9 @@
 <?php
 
-namespace PaperRockScissorsTwo;
+namespace Tests\PaperRockScissorsTwo;
 
 use PaperRockScissorsTwo\DataStructure\PlayerChoice;
+use PaperRockScissorsTwo\Player;
 
 class PlayerTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,10 +35,8 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
     {
         $tizio = new Player();
         $tizio->select($tizioChoice);
-
         $caio = new Player();
         $caio->select($caioChoice);
-
         $this->assertEquals($tizioWinVersusCaio, $tizio->winVersus($caio));
     }
 }

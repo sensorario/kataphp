@@ -20,6 +20,6 @@ class Player
 
     public function winVersus(Player $caio)
     {
-        return WinsRule::with($this->selection, $caio->hasSelected());
+        return WinsRule::with($this->selection, $caio->selection);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace PaperRockScissorsTwo;
+namespace Tests\PaperRockScissorsTwo;
 
 use PaperRockScissorsTwo\DataStructure\WinsRule;
 
-class WinsRuleTest extends \PHPUnit_Framework_TestCase
+class GameWinsRule extends \PHPUnit_Framework_TestCase
 {
     use DataStructure\MatrixGames;
 

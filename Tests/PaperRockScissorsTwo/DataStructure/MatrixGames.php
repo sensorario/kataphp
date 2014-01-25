@@ -1,6 +1,8 @@
 <?php
 
-namespace PaperRockScissorsTwo\DataStructure;
+namespace Tests\PaperRockScissorsTwo\DataStructure;
+
+use PaperRockScissorsTwo\DataStructure\PlayerChoice;
 
 trait MatrixGames
 {
