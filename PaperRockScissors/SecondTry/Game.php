@@ -14,13 +14,13 @@ class Game
      */
     private $caio;
 
-    public function withPlayers(Player $tizio, Player $caio)
+    public function createWithPlayers(Player $tizio, Player $caio)
     {
         $this->tizio = $tizio;
         $this->caio = $caio;
     }
 
-    public function isWinnedBy(Player $player)
+    public function isWonBy(Player $player)
     {
         return $player->winVersus($this->caio);
     }

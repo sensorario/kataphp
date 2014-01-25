@@ -2,7 +2,7 @@
 
 namespace PaperRockScissors\SecondTry\DataStructure;
 
-class WinsRule
+class WinRules
 {
     public function with($tizioSelection, $caioSelection)
     {

@@ -19,8 +19,8 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $caio = new Player();
         $caio->select($caioChoice);
         $game = new Game();
-        $game->withPlayers($tizio, $caio);
-        $this->assertEquals($tizioWinsVersusCaio, $game->isWinnedBy($tizio));
+        $game->createWithPlayers($tizio, $caio);
+        $this->assertEquals($tizioWinsVersusCaio, $game->isWonBy($tizio));
     }
 
     /**
@@ -33,7 +33,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $caio = new Player();
         $caio->select($caioChoice);
         $game = new Game();
-        $game->withPlayers($tizio, $caio);
+        $game->createWithPlayers($tizio, $caio);
         $this->assertEquals($caioLooseVersusTizio, $game->isLostBy($caio));
     }
 }

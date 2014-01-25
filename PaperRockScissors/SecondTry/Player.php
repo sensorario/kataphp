@@ -2,7 +2,7 @@
 
 namespace PaperRockScissors\SecondTry;
 
-use PaperRockScissors\SecondTry\DataStructure\WinsRule;
+use PaperRockScissors\SecondTry\DataStructure\WinRules;
 
 class Player
 {
@@ -20,6 +20,6 @@ class Player
 
     public function winVersus(Player $caio)
     {
-        return WinsRule::with($this->selection, $caio->selection);
+        return WinRules::with($this->selection, $caio->selection);
     }
 }
