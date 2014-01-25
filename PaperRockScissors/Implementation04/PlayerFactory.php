@@ -25,9 +25,4 @@ class PlayerFactory
                 break;
         }
     }
-
-    public function hasSelected()
-    {
-        return $this->selection;
-    }
 }
