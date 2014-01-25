@@ -1,6 +1,6 @@
 <?php
 
-namespace PaperRockScissors;
+namespace PaperRockScissors\FirstTry;
 
 class Paper implements Choice
 {

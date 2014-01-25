@@ -1,7 +1,6 @@
 <?php
 
-namespace PaperRockScissors;
-
+namespace PaperRockScissors\FirstTry;
 class Game
 {
     private $players = array();

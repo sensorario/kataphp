@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\PaperRockScissors;
+namespace Tests\PaperRockScissors\FirstTry;
 
-use PaperRockScissors\Game;
-use PaperRockScissors\Player;
-use PaperRockScissors\Paper;
-use PaperRockScissors\Rock;
-use PaperRockScissors\Scissors;
+use PaperRockScissors\FirstTry\Game;
+use PaperRockScissors\FirstTry\Player;
+use PaperRockScissors\FirstTry\Paper;
+use PaperRockScissors\FirstTry\Rock;
+use PaperRockScissors\FirstTry\Scissors;
 
 class GameTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,10 +24,10 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testHasTwoPlayers()
     {
-        $playerOne = $this->getMockBuilder('PaperRockScissors\Player')
+        $playerOne = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($playerOne);
@@ -42,7 +42,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testHasTwoPlayerReturnFalseWithOnePlayer()
     {
-        $stub = $this->getMockBuilder('PaperRockScissors\Player')
+        $stub = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($stub);
@@ -50,11 +50,11 @@ class GameTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException PaperRockScissors\SamePlayerException
+     * @expectedException PaperRockScissors\FirstTry\SamePlayerException
      */
     public function testPlayersMustBeDifferent()
     {
-        $stub = $this->getMockBuilder('PaperRockScissors\Player')
+        $stub = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($stub);
@@ -63,7 +63,7 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPlayerOne()
     {
-        $player = $this->getMockBuilder('PaperRockScissors\Player')
+        $player = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($player);
@@ -72,10 +72,10 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPlayerTwo()
     {
-        $player = $this->getMockBuilder('PaperRockScissors\Player')
+        $player = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($player);
@@ -85,10 +85,10 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testPlayersAreDifferent()
     {
-        $player = $this->getMockBuilder('PaperRockScissors\Player')
+        $player = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
-        $playerTwo = $this->getMockBuilder('PaperRockScissors\Player')
+        $playerTwo = $this->getMockBuilder('PaperRockScissors\FirstTry\Player')
             ->disableOriginalConstructor()
             ->getMock();
         $this->game->addPlayer($player);
