@@ -1,15 +1,15 @@
 <?php
 
-namespace Tests\PaperRockScissors\ThirdTry;
+namespace Tests\PaperRockScissors\Implementation03;
 
-use PaperRockScissors\ThirdTry\Player;
+use PaperRockScissors\Implementation03\Player;
 
 class PlayerFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testPlayerEntity()
     {
         $tizio = Player::buildFromChoice(Player::CHOICE_PAPER);
-        $this->assertEquals(get_class($tizio), 'PaperRockScissors\ThirdTry\Player');
+        $this->assertEquals(get_class($tizio), 'PaperRockScissors\Implementation03\Player');
     }
 
     public function testPlayerEntityReturnsChoice()

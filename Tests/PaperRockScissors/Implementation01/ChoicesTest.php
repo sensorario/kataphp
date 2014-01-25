@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\PaperRockScissors\FirstTry;
+namespace Tests\PaperRockScissors\Implementation01;
 
-use PaperRockScissors\FirstTry\Paper;
-use PaperRockScissors\FirstTry\Rock;
-use PaperRockScissors\FirstTry\Scissors;
+use PaperRockScissors\Implementation01\Paper;
+use PaperRockScissors\Implementation01\Rock;
+use PaperRockScissors\Implementation01\Scissors;
 
 class ChoicesTest extends \PHPUnit_Framework_TestCase
 {

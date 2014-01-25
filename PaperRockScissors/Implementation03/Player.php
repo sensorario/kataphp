@@ -1,6 +1,6 @@
 <?php
 
-namespace PaperRockScissors\ThirdTry;
+namespace PaperRockScissors\Implementation03;
 
 class Player
 {

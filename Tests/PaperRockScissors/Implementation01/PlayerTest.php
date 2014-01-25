@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\PaperRockScissors\FirstTry;
+namespace Tests\PaperRockScissors\Implementation01;
 
-use PaperRockScissors\FirstTry\Paper;
-use PaperRockScissors\FirstTry\Player;
+use PaperRockScissors\Implementation01\Paper;
+use PaperRockScissors\Implementation01\Player;
 
 class PlayerTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidPaperArgument()
     {
         $iPaper = $this
-            ->getMockBuilder('PaperRockScissors\FirstTry\Choice')
+            ->getMockBuilder('PaperRockScissors\Implementation01\Choice')
             ->getMock();
         new Player($iPaper);
     }
@@ -18,7 +18,7 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
     public function testGetChoice()
     {
         $paper = $this
-            ->getMockBuilder('PaperRockScissors\FirstTry\Paper')
+            ->getMockBuilder('PaperRockScissors\Implementation01\Paper')
             ->getMock();
         $player = new Player($paper);
         $this->assertTrue($player->getChoice() === $paper);
@@ -28,6 +28,6 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
     {
         $paper = new Paper();
         $player = new Player($paper);
-        $this->assertInstanceOf('PaperRockScissors\FirstTry\Paper', $player->getChoice());
+        $this->assertInstanceOf('PaperRockScissors\Implementation01\Paper', $player->getChoice());
     }
 }

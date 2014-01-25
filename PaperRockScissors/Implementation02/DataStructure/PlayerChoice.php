@@ -1,6 +1,6 @@
 <?php
 
-namespace PaperRockScissors\SecondTry\DataStructure;
+namespace PaperRockScissors\Implementation02\DataStructure;
 
 class PlayerChoice
 {

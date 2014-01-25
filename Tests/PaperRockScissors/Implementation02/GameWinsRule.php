@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\PaperRockScissors\SecondTry;
+namespace Tests\PaperRockScissors\Implementation02;
 
 class GameWinsRule extends \PHPUnit_Framework_TestCase
 {

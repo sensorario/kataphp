@@ -1,6 +1,6 @@
 <?php
 
-namespace PaperRockScissors\SecondTry;
+namespace PaperRockScissors\Implementation02;
 
 class Game
 {
