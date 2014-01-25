@@ -1,8 +1,8 @@
 <?php
 
-namespace PaperRockScissorsTwo;
+namespace PaperRockScissors\SecondTry;
 
-use PaperRockScissorsTwo\DataStructure\WinsRule;
+use PaperRockScissors\SecondTry\DataStructure\WinsRule;
 
 class Player
 {

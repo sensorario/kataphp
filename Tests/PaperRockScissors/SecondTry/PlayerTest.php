@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\PaperRockScissorsTwo;
+namespace Tests\PaperRockScissors\SecondTry;
 
-use PaperRockScissorsTwo\DataStructure\PlayerChoice;
-use PaperRockScissorsTwo\Player;
+use PaperRockScissors\SecondTry\DataStructure\PlayerChoice;
+use PaperRockScissors\SecondTry\Player;
 
 class PlayerTest extends \PHPUnit_Framework_TestCase
 {

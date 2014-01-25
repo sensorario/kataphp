@@ -1,6 +1,6 @@
 <?php
 
-namespace PaperRockScissorsTwo\DataStructure;
+namespace PaperRockScissors\SecondTry\DataStructure;
 
 class WinsRule
 {

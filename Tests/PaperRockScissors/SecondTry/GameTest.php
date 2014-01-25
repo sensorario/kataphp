@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\PaperRockScissorsTwo;
+namespace Tests\PaperRockScissors\SecondTry;
 
-use PaperRockScissorsTwo\Player;
-use PaperRockScissorsTwo\Game;
+use PaperRockScissors\SecondTry\Player;
+use PaperRockScissors\SecondTry\Game;
 
 class GameTest extends \PHPUnit_Framework_TestCase
 {
