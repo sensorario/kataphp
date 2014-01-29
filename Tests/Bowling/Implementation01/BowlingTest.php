@@ -34,6 +34,14 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($player->hasOneMoreLaunch());
     }
 
+    public function testTwoLaunchAvailability()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $player->doLaunch(3);
+        $this->assertFalse($player->hasOneMoreLaunch());
+    }
+
 //    public function testAllStrike()
 //    {
 //        $player = new Player();

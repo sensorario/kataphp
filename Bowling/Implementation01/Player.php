@@ -6,6 +6,7 @@ class Player
 {
     private $points;
     private $launch;
+    private $lanciFatti = 0;
 
     public function __construct()
     {
@@ -36,10 +37,11 @@ class Player
 
     public function doLaunch()
     {
+        $this->lanciFatti++;
     }
 
     public function hasOneMoreLaunch()
     {
-        return true;
+        return !($this->lanciFatti == 2);
     }
 }
