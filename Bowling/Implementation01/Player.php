@@ -3,6 +3,7 @@
 namespace Bowling\Implementation01;
 
 use Bowling\Implementation01\PlayerMustLaunchTwoTimesException;
+use Bowling\Implementation01\PlayerCanLaunchOneTimeException;
 
 class Player
 {
@@ -35,6 +36,11 @@ class Player
     public function doStrike()
     {
         $countLaunch = count($this->launch);
+
+        if ($countLaunch != 0) {
+            throw new PlayerCanLaunchOneTimeException;
+        }
+
         $this->launch[$countLaunch] = 10;
     }
 

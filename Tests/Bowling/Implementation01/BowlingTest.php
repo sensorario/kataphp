@@ -4,6 +4,7 @@ namespace Tests\Bowling\Implementation01;
 
 use Bowling\Implementation01\Player;
 use Bowling\Implementation01\PlayerMustLaunchTwoTimesException;
+use Bowling\Implementation01\PlayerCanLaunchOneTimeException;
 
 class BowlingTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,12 +21,14 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10, $player->hasPoints());
     }
 
+    /**
+     * @expectedException Bowling\Implementation01\PlayerCanLaunchOneTimeException
+     */
     public function testSecondStrike()
     {
         $player = new Player();
         $player->doStrike();
         $player->doStrike();
-        $this->assertEquals(30, $player->hasPoints());
     }
 
     public function testTiriADisposizione()
@@ -34,7 +37,6 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $player->doLaunch(3);
         $this->assertTrue($player->hasOneMoreLaunch());
     }
-
     public function testTwoLaunchAvailability()
     {
         $player = new Player();
