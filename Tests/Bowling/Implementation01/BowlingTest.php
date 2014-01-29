@@ -3,6 +3,7 @@
 namespace Tests\Bowling\Implementation01;
 
 use Bowling\Implementation01\Player;
+use Bowling\Implementation01\PlayerMustLaunchTwoTimesException;
 
 class BowlingTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,6 +41,33 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $player->doLaunch(3);
         $player->doLaunch(3);
         $this->assertFalse($player->hasOneMoreLaunch());
+    }
+
+    public function testPlayerHasNotTwoLaunchAvailabilityAfterEndTurn()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $this->assertFalse($player->hasTwoLaunchAvailability());
+    }
+
+    public function testTwoLaunchAvailabilityAfterEndTurn()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $player->doLaunch(3);
+        $player->leaveTurnToNextPlayer();
+        $this->assertTrue($player->hasTwoLaunchAvailability());
+    }
+
+    /**
+     * @expectedException Bowling\Implementation01\PlayerMustLaunchTwoTimesException
+     */
+    public function testPlayerMustLaunchTwoTimes()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $player->leaveTurnToNextPlayer();
+        $this->assertTrue($player->hasTwoLaunchAvailability());
     }
 
 //    public function testAllStrike()

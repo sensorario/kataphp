@@ -2,16 +2,19 @@
 
 namespace Bowling\Implementation01;
 
+use Bowling\Implementation01\PlayerMustLaunchTwoTimesException;
+
 class Player
 {
     private $points;
     private $launch;
-    private $lanciFatti = 0;
+    private $launchDone = 0;
 
     public function __construct()
     {
         $this->points = 0;
         $this->launch = array();
+        $this->twoLaunchAvailable = false;
     }
 
     public function hasPoints()
@@ -37,11 +40,25 @@ class Player
 
     public function doLaunch()
     {
-        $this->lanciFatti++;
+        $this->launchDone += 1;
     }
 
     public function hasOneMoreLaunch()
     {
-        return !($this->lanciFatti == 2);
+        return !($this->launchDone == 2);
+    }
+
+    public function leaveTurnToNextPlayer()
+    {
+        if ($this->launchDone == 1) {
+            throw new PlayerMustLaunchTwoTimesException;
+        }
+
+        $this->twoLaunchAvailable = true;
+    }
+
+    public function hasTwoLaunchAvailability()
+    {
+        return $this->twoLaunchAvailable;
     }
 }
