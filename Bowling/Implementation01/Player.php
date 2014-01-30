@@ -10,6 +10,7 @@ class Player
     private $points;
     private $turns;
     private $launchDone = 0;
+    private $birilliInPiedi = 0;
 
     public function __construct($name)
     {
@@ -17,6 +18,7 @@ class Player
         $this->turns = array();
         $this->twoLaunchAvailable = false;
         $this->name = $name;
+        $this->birilliInPiedi = 10;
     }
 
     public function getName()
@@ -44,26 +46,29 @@ class Player
             throw new PlayerCanLaunchOneTimeException;
         }
 
+        $this->birilliInPiedi = 0;
+
         $this->turns[$countLaunch] = 10;
     }
 
-    public function doLaunch()
+    public function doLaunch($birilli)
     {
+        $this->birilliInPiedi -= $birilli;
         $this->launchDone += 1;
     }
 
     public function hasOneMoreLaunch()
     {
-        return !($this->launchDone == 2);
+        return !($this->launchDone == 2) && $this->birilliInPiedi > 0;
     }
 
     public function leaveTurnToNextPlayer()
     {
-        if ($this->launchDone <= 1) {
+        if ($this->launchDone <= 1 && $this->hasOneMoreLaunch()) {
             throw new PlayerMustLaunchTwoTimesException;
         }
 
-        $this->twoLaunchAvailable = true;
+        $this->twoLaunchAvailable = $this->birilliInPiedi > 0;
     }
 
     public function hasTwoLaunchAvailability()

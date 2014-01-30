@@ -102,4 +102,20 @@ class GameTest extends \PHPUnit_Framework_TestCase
         $currentPlayer = $game->currentPlayer();
         $this->assertTrue($currentPlayer === $tom);
     }
+
+    public function testChangeTurnAfterStrike()
+    {
+        $sam = new Player('Sam');
+        $tom = new Player('Tom');
+
+        $game = new Game();
+        $game->addPlayer($sam);
+        $game->addPlayer($tom);
+
+        $game->currentPlayerLaunch(10);
+        $game->changeCurrentPlayer();
+
+        $currentPlayer = $game->currentPlayer();
+        $this->assertTrue($currentPlayer === $tom);
+    }
 }

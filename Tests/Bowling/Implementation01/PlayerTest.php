@@ -54,6 +54,13 @@ class PlayerTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($sam->hasOneMoreLaunch());
     }
 
+    public function testNoLauchAvailabilityAfterStrike()
+    {
+        $sam = new Player('Sam');
+        $sam->doStrike();
+        $this->assertFalse($sam->hasOneMoreLaunch());
+    }
+
     public function testPlayerHasNotTwoLaunchAvailabilityAfterEndTurn()
     {
         $sam = new Player('Sam');

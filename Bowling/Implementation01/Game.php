@@ -36,7 +36,11 @@ class Game
 
     public function currentPlayerLaunch($birilli)
     {
-        $this->currentPlayer()->doLaunch($birilli);
+        if ($birilli == 10) {
+            $this->currentPlayer()->doStrike();
+        } else {
+            $this->currentPlayer()->doLaunch($birilli);
+        }
     }
 
     public function currentPlayerMustLaunchAgain()
