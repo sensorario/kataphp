@@ -5,6 +5,7 @@ namespace Tests\Bowling\Implementation01;
 use Bowling\Implementation01\Player;
 use Bowling\Implementation01\PlayerMustLaunchTwoTimesException;
 use Bowling\Implementation01\PlayerCanLaunchOneTimeException;
+use PaperRockScissors\Implementation01\Game;
 
 class BowlingTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,6 +38,7 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $player->doLaunch(3);
         $this->assertTrue($player->hasOneMoreLaunch());
     }
+
     public function testTwoLaunchAvailability()
     {
         $player = new Player();
@@ -72,12 +74,27 @@ class BowlingTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($player->hasTwoLaunchAvailability());
     }
 
-//    public function testAllStrike()
-//    {
-//        $player = new Player();
-//        for ($i = 0; $i <= 10; $i++) {
-//            $player->doStrike();
-//        }
-//        $this->assertEquals(300, $player->hasPoints());
-//    }
+    /**
+     * @expectedException Bowling\Implementation01\PlayerMustLaunchTwoTimesException
+     */
+    public function testCantLeaveTurnWithoutLaunch()
+    {
+        $player = new Player();
+        $player->leaveTurnToNextPlayer();
+    }
+
+    public function testCanLeaveTurnWithoutLaunch()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $player->doLaunch(2);
+        $this->assertTrue($player->canLeaveTurnToNextPlayer());
+    }
+
+    public function testCannotLeaveTurnWithoutTwoLaunch()
+    {
+        $player = new Player();
+        $player->doLaunch(3);
+        $this->assertFalse($player->canLeaveTurnToNextPlayer());
+    }
 }

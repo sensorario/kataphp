@@ -53,7 +53,7 @@ class Player
 
     public function leaveTurnToNextPlayer()
     {
-        if ($this->launchDone == 1) {
+        if ($this->launchDone <= 1) {
             throw new PlayerMustLaunchTwoTimesException;
         }
 
@@ -63,5 +63,10 @@ class Player
     public function hasTwoLaunchAvailability()
     {
         return $this->twoLaunchAvailable;
+    }
+
+    public function canLeaveTurnToNextPlayer()
+    {
+        return !($this->hasOneMoreLaunch());
     }
 }
