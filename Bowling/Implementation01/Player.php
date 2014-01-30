@@ -11,11 +11,17 @@ class Player
     private $turns;
     private $launchDone = 0;
 
-    public function __construct()
+    public function __construct($name)
     {
         $this->points = 0;
         $this->turns = array();
         $this->twoLaunchAvailable = false;
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function hasPoints()
