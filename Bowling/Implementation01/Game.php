@@ -2,56 +2,69 @@
 
 namespace Bowling\Implementation01;
 
-use Bowling\Implementation01\Player;
-
 class Game
 {
-    private $players;
-    private $indexOfCurrentPlayer;
+    private $frame;
+    private $index;
 
     public function __construct()
     {
-        $this->players = array();
-        $this->indexOfCurrentPlayer = 0;
+        $this->index = 0;
+        $this->frame = [];
     }
 
-    public function addPlayer($player)
+    public function playFrame($shots)
     {
-        $this->players[] = $player;
+        $index = $this->index;
+        $this->frame[$index] = $shots;
+        $this->index++;
     }
 
-    public function firstPlayer()
+    public function shots()
     {
-        return $this->players[0];
-    }
-
-    /**
-     * @return Player
-     */
-    public function currentPlayer()
-    {
-        $indexOfCurrentPlayer = $this->indexOfCurrentPlayer;
-        return $this->players[$indexOfCurrentPlayer];
-    }
-
-    public function currentPlayerLaunch($birilli)
-    {
-        if ($birilli == 10) {
-            $this->currentPlayer()->doStrike();
-        } else {
-            $this->currentPlayer()->doLaunch($birilli);
+        $shots = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for ($i = 0; $i < $this->index; $i++) {
+            $shots[$i] = $this->frame[$i];
         }
+        return $shots;
     }
 
-    public function currentPlayerMustLaunchAgain()
+    public function points()
     {
-        $currentPlayer = $this->currentPlayer();
-        return $currentPlayer->hasOneMoreLaunch();
+        $points = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for ($i = $this->index - 1; $i >= 0; $i--) {
+            $points[$i] = $this->frame[$i][0] + $this->frame[$i][1];
+            if ($i < $this->index - 1) {
+                if (($this->frame[$i][0] + $this->frame[$i][1]) == 10) {
+                    $points[$i] += $this->frame[$i][0] == 10 ?
+                        $this->getNextShotPoints($i + 1) :
+                        $this->frame[$i + 1][0];
+                }
+            }
+        }
+        return $points;
     }
 
-    public function changeCurrentPlayer()
+    public function calculatePoints()
     {
-        $this->currentPlayer()->leaveTurnToNextPlayer();
-        $this->indexOfCurrentPlayer++;
+        $points = $this->points();
+        $sum = 0;
+        foreach ($points as $point) {
+            $sum += $point;
+        }
+        return $sum;
+    }
+
+    private function getNextShotPoints($i, $nextShotPoints = 0)
+    {
+        if (!empty($this->frame[$i][0])) {
+            $nextShotPoints = $this->frame[$i][0] + $this->frame[$i][1];
+            if ($nextShotPoints == 10 && $this->frame[$i][1] == 0) {
+                if (!empty($this->frame[$i + 1])) {
+                    $nextShotPoints += $this->frame[$i + 1][0] + $this->frame[$i + 1][1];
+                }
+            }
+        }
+        return $nextShotPoints;
     }
 }
