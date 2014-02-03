@@ -2,7 +2,7 @@
 
 namespace Bowling\Implementation01;
 
-class Game
+class Player
 {
     private $frames;
     private $index;
