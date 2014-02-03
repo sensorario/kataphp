@@ -25,15 +25,6 @@ class BowlingTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($game->calculatePoints() === 300);
     }
 
-    public function testScoreOfPlayerAfterAllStrike()
-    {
-        $game = new Player();
-        for ($i = 0; $i <= 10; $i++) {
-            $game->playFrame([10, 0]);
-        }
-        $this->assertTrue($game->calculatePoints() === 300);
-    }
-
     /**
      * @dataProvider shotsAndShots
      */
