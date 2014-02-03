@@ -27,7 +27,7 @@ class Player
         return $shots;
     }
 
-    public function calculatePoints()
+    public function score()
     {
         $points = $this->points();
         $sum = 0;

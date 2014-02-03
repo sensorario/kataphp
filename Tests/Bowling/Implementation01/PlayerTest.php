@@ -5,36 +5,36 @@ namespace Tests\Bowling\Implementation01;
 use PHPUnit_Framework_TestCase;
 use Bowling\Implementation01\Player;
 
-class BowlingTest extends PHPUnit_Framework_TestCase
+class PlayerTest extends PHPUnit_Framework_TestCase
 {
-    public function testGameAfterFourStrike()
+    public function testPlayerScoresAfterFourStrike()
     {
-        $game = new Player();
+        $player = new Player();
         for ($i = 0; $i <= 3; $i++) {
-            $game->playFrame([10, 0]);
+            $player->playFrame([10, 0]);
         }
-        $this->assertTrue($game->points() === [30, 30, 20, 10, 0, 0, 0, 0, 0, 0, 0]);
+        $this->assertTrue($player->points() === [30, 30, 20, 10, 0, 0, 0, 0, 0, 0, 0]);
     }
 
-    public function testGamePointsAfterAllStrike()
+    public function testPlayerScoresAfterAllStrike()
     {
-        $game = new Player();
+        $player = new Player();
         for ($i = 0; $i <= 10; $i++) {
-            $game->playFrame([10, 0]);
+            $player->playFrame([10, 0]);
         }
-        $this->assertTrue($game->calculatePoints() === 300);
+        $this->assertTrue($player->score() === 300);
     }
 
     /**
      * @dataProvider shotsAndShots
      */
-    public function testGameMuddle($shots, $allShots)
+    public function testPlayerShotsArray($shots, $allShots)
     {
-        $game = new Player();
+        $player = new Player();
         foreach ($shots as $shot) {
-            $game->playFrame($shot);
+            $player->playFrame($shot);
         }
-        $this->assertTrue($game->getShots() === $allShots);
+        $this->assertTrue($player->getShots() === $allShots);
     }
 
     public function shotsAndShots()
@@ -44,23 +44,35 @@ class BowlingTest extends PHPUnit_Framework_TestCase
             [[[10, 0], [10, 0]], [[10, 0], [10, 0], 0, 0, 0, 0, 0, 0, 0, 0, 0],],
             [[[10, 0], [10, 0], [10, 0]], [[10, 0], [10, 0], [10, 0], 0, 0, 0, 0, 0, 0, 0, 0],],
             [[[10, 0], [10, 0], [10, 0], [2, 3]], [[10, 0], [10, 0], [10, 0], [2, 3], 0, 0, 0, 0, 0, 0, 0],],
-            [[[10, 0], [10, 0], [10, 0], [2, 3], [0, 10]], [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], 0, 0, 0, 0, 0, 0],],
-            [[[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10]], [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], 0, 0, 0, 0, 0],],
-            [[[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7]], [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], 0, 0, 0, 0],],
-            [[[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], [7, 3]], [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], [7, 3], 0, 0, 0],],
+            [
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10]],
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], 0, 0, 0, 0, 0, 0],
+            ],
+            [
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10]],
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], 0, 0, 0, 0, 0],
+            ],
+            [
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7]],
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], 0, 0, 0, 0],
+            ],
+            [
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], [7, 3]],
+                [[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], [7, 3], 0, 0, 0],
+            ],
         ];
     }
 
     /**
      * @dataProvider shotsAndPoints
      */
-    public function testPoints($shots, $score)
+    public function testPlayerScoreFramesArray($shots, $score)
     {
-        $game = new Player();
+        $player = new Player();
         foreach ($shots as $shot) {
-            $game->playFrame($shot);
+            $player->playFrame($shot);
         }
-        $this->assertTrue($game->points() === $score);
+        $this->assertTrue($player->points() === $score);
     }
 
     public function shotsAndPoints()
@@ -85,11 +97,11 @@ class BowlingTest extends PHPUnit_Framework_TestCase
      */
     public function testScore($shots, $score)
     {
-        $game = new Player();
+        $player = new Player();
         foreach ($shots as $shot) {
-            $game->playFrame($shot);
+            $player->playFrame($shot);
         }
-        $this->assertTrue($game->calculatePoints() === $score);
+        $this->assertTrue($player->score() === $score);
     }
 
     public function shotsAndScores()
