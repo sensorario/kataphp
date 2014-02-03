@@ -18,7 +18,7 @@ class Player
     /**
      * @return Player
      */
-    public function createFromChoice($choice)
+    public static function createFromChoice($choice)
     {
         $scissors = Player::CHOICE_SCISSORS;
         $paper = Player::CHOICE_PAPER;
