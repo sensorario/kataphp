@@ -9,11 +9,11 @@ class FactoryBuilder
 {
     public static function build($dataSet)
     {
-        if ($dataSet == 'uno') {
-            return new Uno();
-        }
-        if ($dataSet == 'due') {
-            return new Due();
+        switch ($dataSet) {
+            case 'uno':
+                return new Uno();
+            case 'due':
+                return new Due();
         }
     }
 }

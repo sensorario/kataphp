@@ -20,8 +20,8 @@ class FactoryPatternTest extends \PHPUnit_Framework_TestCase
     public function childrens()
     {
         return [
-            ['uno', 'Patterns\\Factory\\Childrens\\Uno'],
-            ['due', 'Patterns\\Factory\\Childrens\\Due'],
+            ['uno', 'Patterns\Factory\Childrens\Uno'],
+            ['due', 'Patterns\Factory\Childrens\Due'],
         ];
     }
 }
