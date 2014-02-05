@@ -2,26 +2,42 @@
 
 namespace Tests\Patterns\Factory;
 
-use Patterns\Factory\Childrens\Uno;
-use Patterns\Factory\Childrens\Due;
-use Patterns\Factory\FactoryBuilder;
+use Patterns\Factory\FactoryKindBuilder;
+use Patterns\Factory\Interfaces\KindKids;
 
 class FactoryPatternTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider childrens
+     * @dataProvider kidsClass
      */
     public function testBuilder($name, $className)
     {
-        $generatedClass = FactoryBuilder::build($name);
+        $generatedClass = FactoryKindBuilder::build($name);
         $this->assertTrue(get_class($generatedClass) === $className);
     }
 
-    public function childrens()
+    public function kidsClass()
     {
         return [
             ['uno', 'Patterns\Factory\Childrens\Uno'],
             ['due', 'Patterns\Factory\Childrens\Due'],
+        ];
+    }
+
+    /**
+     * @dataProvider kidsImplements
+     */
+    public function testKindOf($name)
+    {
+        $generatedClass = FactoryKindBuilder::build($name);
+        $this->assertTrue($generatedClass instanceof KindKids);
+    }
+
+    public function kidsImplements()
+    {
+        return [
+            ['uno'],
+            ['due'],
         ];
     }
 }

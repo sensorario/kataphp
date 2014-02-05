@@ -5,7 +5,7 @@ namespace Patterns\Factory;
 use Patterns\Factory\Childrens\Due;
 use Patterns\Factory\Childrens\Uno;
 
-class FactoryBuilder
+class FactoryKindBuilder
 {
     public static function build($dataSet)
     {

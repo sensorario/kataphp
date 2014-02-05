@@ -2,7 +2,9 @@
 
 namespace Patterns\Factory\Childrens;
 
-class Due
+use Patterns\Factory\Interfaces\KindKids;
+
+class Due implements KindKids
 {
 
 }

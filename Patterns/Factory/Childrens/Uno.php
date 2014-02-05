@@ -2,7 +2,9 @@
 
 namespace Patterns\Factory\Childrens;
 
-class Uno
+use Patterns\Factory\Interfaces\KindKids;
+
+class Uno implements KindKids
 {
 
 }
