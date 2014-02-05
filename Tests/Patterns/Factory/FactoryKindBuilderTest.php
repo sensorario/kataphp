@@ -5,7 +5,7 @@ namespace Tests\Patterns\Factory;
 use Patterns\Factory\FactoryKindBuilder;
 use Patterns\Factory\Interfaces\KindKids;
 
-class FactoryPatternTest extends \PHPUnit_Framework_TestCase
+class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider kidsClass
@@ -19,8 +19,8 @@ class FactoryPatternTest extends \PHPUnit_Framework_TestCase
     public function kidsClass()
     {
         return [
-            ['uno', 'Patterns\Factory\Childrens\Uno'],
-            ['due', 'Patterns\Factory\Childrens\Due'],
+            ['uno', 'Patterns\Factory\Kids\Uno'],
+            ['due', 'Patterns\Factory\Kids\Due'],
         ];
     }
 

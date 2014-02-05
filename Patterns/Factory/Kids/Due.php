@@ -1,6 +1,6 @@
 <?php
 
-namespace Patterns\Factory\Childrens;
+namespace Patterns\Factory\Kids;
 
 use Patterns\Factory\Interfaces\KindKids;
 

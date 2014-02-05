@@ -2,8 +2,8 @@
 
 namespace Patterns\Factory;
 
-use Patterns\Factory\Childrens\Due;
-use Patterns\Factory\Childrens\Uno;
+use Patterns\Factory\Kids\Due;
+use Patterns\Factory\Kids\Uno;
 
 class FactoryKindBuilder
 {
