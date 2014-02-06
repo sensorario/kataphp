@@ -2,18 +2,18 @@
 
 namespace Patterns\Factory;
 
-use Patterns\Factory\Kids\Due;
-use Patterns\Factory\Kids\Uno;
+use Patterns\Factory\Kids\Dog;
+use Patterns\Factory\Kids\Horse;
 
 class FactoryKindBuilder
 {
     public static function build($dataSet)
     {
         switch ($dataSet) {
-            case 'uno':
-                return new Uno();
-            case 'due':
-                return new Due();
+            case 'horse':
+                return new Horse();
+            case 'dog':
+                return new Dog();
         }
     }
 }

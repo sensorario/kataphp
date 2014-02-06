@@ -14,14 +14,14 @@ class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
     {
         $generatedClass = FactoryKindBuilder::build($name);
         $this->assertTrue(get_class($generatedClass) === $className);
-        $this->assertTrue($generatedClass->fischia() === $methodWillReturn);
+        $this->assertTrue($generatedClass->verso() === $methodWillReturn);
     }
 
     public function kidsClass()
     {
         return [
-            ['uno', 'Patterns\Factory\Kids\Uno', 'cocomero'],
-            ['due', 'Patterns\Factory\Kids\Due', 'melone'],
+            ['dog', 'Patterns\Factory\Kids\Dog', 'abbaia'],
+            ['horse', 'Patterns\Factory\Kids\Horse', 'nitrisce'],
         ];
     }
 
@@ -37,8 +37,8 @@ class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
     public function kidsImplements()
     {
         return [
-            ['uno'],
-            ['due'],
+            ['dog'],
+            ['horse'],
         ];
     }
 }

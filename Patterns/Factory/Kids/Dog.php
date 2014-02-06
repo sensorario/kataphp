@@ -4,10 +4,10 @@ namespace Patterns\Factory\Kids;
 
 use Patterns\Factory\Interfaces\KindKids;
 
-class Due implements KindKids
+class Dog implements KindKids
 {
-    public function fischia()
+    public function verso()
     {
-        return 'melone';
+        return 'abbaia';
     }
 }

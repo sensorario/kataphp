@@ -4,10 +4,10 @@ namespace Patterns\Factory\Kids;
 
 use Patterns\Factory\Interfaces\KindKids;
 
-class Uno implements KindKids
+class Horse implements KindKids
 {
-    public function fischia()
+    public function verso()
     {
-        return 'cocomero';
+        return 'nitrisce';
     }
 }
