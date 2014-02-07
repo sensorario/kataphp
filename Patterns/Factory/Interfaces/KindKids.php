@@ -4,5 +4,5 @@ namespace Patterns\Factory\Interfaces;
 
 interface KindKids
 {
-    public function verso();
+    public function verse();
 }

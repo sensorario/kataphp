@@ -10,18 +10,34 @@ class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider kidsClass
      */
-    public function testBuilder($name, $className, $methodWillReturn)
+    public function testBuilder($name, $className)
     {
         $generatedClass = FactoryKindBuilder::build($name);
         $this->assertTrue(get_class($generatedClass) === $className);
-        $this->assertTrue($generatedClass->verso() === $methodWillReturn);
     }
 
     public function kidsClass()
     {
         return [
-            ['dog', 'Patterns\Factory\Kids\Dog', 'abbaia'],
-            ['horse', 'Patterns\Factory\Kids\Horse', 'nitrisce'],
+            ['dog', 'Patterns\Factory\Kids\Dog'],
+            ['horse', 'Patterns\Factory\Kids\Horse'],
+        ];
+    }
+
+    /**
+     * @dataProvider kidsClassMethods
+     */
+    public function testBuilderMethods($name, $methodWillReturn)
+    {
+        $generatedClass = FactoryKindBuilder::build($name);
+        $this->assertTrue($generatedClass->verse() === $methodWillReturn);
+    }
+
+    public function kidsClassMethods()
+    {
+        return [
+            ['dog', 'abbaia'],
+            ['horse', 'nitrisce'],
         ];
     }
 
