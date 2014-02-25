@@ -10,6 +10,9 @@ use PaperRockScissors\Implementation01\Scissors;
 
 class GameTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Game
+     */
     private $game;
 
     public function setUp()
@@ -133,9 +136,9 @@ class GameTest extends \PHPUnit_Framework_TestCase
 
     public function testNumPlayerCount()
     {
-        $numPlayerBegin = $this->game->getNumberOgPlayers();
+        $numPlayerBegin = $this->game->numberOfPlayers();
         $this->game->addPlayer(new Player(new Paper()));
-        $this->assertEquals($numPlayerBegin + 1, $this->game->getNumberOgPlayers());
+        $this->assertEquals($numPlayerBegin + 1, $this->game->numberOfPlayers());
     }
 
     public function testHasPlayers()
