@@ -10,7 +10,6 @@ class FollowersTest extends PHPUnit_Framework_TestCase
     public function testPageIsObservervable()
     {
         $page = new Page();
-        $this->assertTrue(true);
     }
 
     public function testUsersAreObserver()
