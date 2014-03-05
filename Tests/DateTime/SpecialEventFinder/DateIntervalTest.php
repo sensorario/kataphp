@@ -67,4 +67,10 @@ class DateIntervalTest extends PHPUnit_Framework_TestCase
             [new DateTime("-11 days")],
         ];
     }
+
+    public function testDateTimeFormat()
+    {
+        $dateTime = new DateTime("05/30/1982");
+        $this->assertEquals("May 30", $dateTime->format("M d"));
+    }
 }
