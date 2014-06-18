@@ -23,4 +23,9 @@ interface StateMachinable
      * @return string
      */
     public function status();
+
+    /**
+     * @return $this
+     */
+    public function becomeWaiting();
 }

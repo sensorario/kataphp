@@ -18,6 +18,8 @@ class Entity implements StateMachinable
         self::CLOSED,
     ];
 
+    private $currentStatus = self::CREATED;
+
     /**
      * @return array
      */
@@ -39,7 +41,7 @@ class Entity implements StateMachinable
      */
     public function defaultState()
     {
-        return $this->statuses[0];
+        return self::CREATED;
     }
 
     /**
@@ -47,6 +49,16 @@ class Entity implements StateMachinable
      */
     public function status()
     {
-        return $this->statuses[0];
+        return $this->currentStatus;
+    }
+
+    /**
+     * @return $this
+     */
+    public function becomeWaiting()
+    {
+        $this->currentStatus = self::WAITING;
+
+        return $this;
     }
 }
