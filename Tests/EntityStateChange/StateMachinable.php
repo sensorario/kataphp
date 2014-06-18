@@ -13,4 +13,9 @@ interface StateMachinable
      * @return integer
      */
     public function countStatuses();
+
+    /**
+     * @return integer
+     */
+    public function defaultState();
 }

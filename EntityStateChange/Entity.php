@@ -31,4 +31,12 @@ class Entity implements StateMachinable
     {
         return count($this->statusList());
     }
+
+    /**
+     * @return integer
+     */
+    public function defaultState()
+    {
+        return self::CREATED;
+    }
 }
