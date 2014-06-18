@@ -2,15 +2,10 @@
 
 namespace EntityStateChange;
 
-use Tests\EntityStateChange\StateMachinable;
+use EntityStateChange\StateMachinable;
 
 class Entity implements StateMachinable
 {
-    const CREATED = 'created';
-    const PENDING = 'pending';
-    const WAITING = 'waiting';
-    const CLOSED = 'closed';
-
     private $statuses = [
         self::CREATED,
         self::PENDING,
@@ -60,5 +55,21 @@ class Entity implements StateMachinable
         $this->currentStatus = self::WAITING;
 
         return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function becomePending()
+    {
+        $this->currentStatus = self::PENDING;
+    }
+
+    /**
+     * @return $this
+     */
+    public function close()
+    {
+        $this->currentStatus = self::CLOSED;
     }
 }

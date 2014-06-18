@@ -1,9 +1,14 @@
 <?php
 
-namespace Tests\EntityStateChange;
+namespace EntityStateChange;
 
 interface StateMachinable
 {
+    const CREATED = 'created';
+    const PENDING = 'pending';
+    const WAITING = 'waiting';
+    const CLOSED = 'closed';
+
     /**
      * @return array
      */
@@ -28,4 +33,14 @@ interface StateMachinable
      * @return $this
      */
     public function becomeWaiting();
+
+    /**
+     * @return $this
+     */
+    public function becomePending();
+
+    /**
+     * @return $this
+     */
+    public function close();
 }
