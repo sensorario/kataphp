@@ -7,7 +7,6 @@ use EntityStateChange\Entity;
 
 class EntityStatusChangeTest extends PHPUnit_Framework_TestCase
 {
-
     public function testStatusList()
     {
         $entity = new Entity();
@@ -20,5 +19,6 @@ class EntityStatusChangeTest extends PHPUnit_Framework_TestCase
         ];
 
         $this->assertEquals($statuses, $entity->statusList());
+        $this->assertEquals(count($statuses), $entity->countStatuses());
     }
 }

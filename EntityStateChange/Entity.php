@@ -29,6 +29,6 @@ class Entity implements StateMachinable
      */
     public function countStatuses()
     {
-        // TODO: Implement countStatuses() method.
+        return count($this->statusList());
     }
 }
