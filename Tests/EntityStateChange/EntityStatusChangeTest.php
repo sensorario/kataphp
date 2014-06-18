@@ -27,5 +27,6 @@ class EntityStatusChangeTest extends PHPUnit_Framework_TestCase
         $entity = new Entity();
 
         $this->assertEquals(Entity::CREATED, $entity->defaultState());
+        $this->assertEquals(Entity::CREATED, $entity->status());
     }
 }

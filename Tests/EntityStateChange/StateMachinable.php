@@ -18,4 +18,9 @@ interface StateMachinable
      * @return integer
      */
     public function defaultState();
+
+    /**
+     * @return string
+     */
+    public function status();
 }

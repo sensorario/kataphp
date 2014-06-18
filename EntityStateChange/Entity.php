@@ -41,4 +41,12 @@ class Entity implements StateMachinable
     {
         return $this->statuses[0];
     }
+
+    /**
+     * @return string
+     */
+    public function status()
+    {
+        return $this->statuses[0];
+    }
 }
