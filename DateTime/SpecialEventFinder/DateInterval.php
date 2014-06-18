@@ -20,6 +20,8 @@ class DateInterval
     {
         $this->dateFrom = new DateTime("-1 days");
         $this->dateTo = new DateTime("+6 days");
+
+        $this->dateFrom->setTime(0, 0, 0);
     }
 
     public function setDateFrom(DateTime $from)

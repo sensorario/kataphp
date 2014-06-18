@@ -19,7 +19,7 @@ class DateIntervalTest extends PHPUnit_Framework_TestCase
     public function testRangeStartsFromYesterday()
     {
         $defaultRange = new DateInterval();
-        $this->assertEquals($defaultRange->getDateFrom(), new DateTime("-1 days"));
+        $this->assertEquals($defaultRange->getDateFrom()->format('d/m/Y'), (new DateTime("-1 days"))->format('d/m/Y'));
     }
 
     public function testRangeEndsToSixDays()
@@ -72,5 +72,11 @@ class DateIntervalTest extends PHPUnit_Framework_TestCase
     {
         $dateTime = new DateTime("05/30/1982");
         $this->assertEquals("May 30", $dateTime->format("M d"));
+    }
+
+    public function testDateTimeStartsFrom_00_00_00()
+    {
+        $interval = new DateInterval();
+        $this->assertEquals('00:00:00', $interval->getDateFrom()->format('H:i:s'));
     }
 }

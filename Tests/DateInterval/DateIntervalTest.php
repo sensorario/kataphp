@@ -11,7 +11,7 @@ class DateIntervalTest extends PHPUnit_Framework_TestCase
     public function testDateInterval()
     {
         $dateInterval = new DateInterval('P2D');
-        $this->assertEquals(new DateTime('-1 days'), $dateInterval->getDateFrom());
+        $this->assertEquals((new DateTime('-1 days'))->format('d/m/Y'), $dateInterval->getDateFrom()->format('d/m/Y'));
         $this->assertEquals(new DateTime('+6 days'), $dateInterval->getDateTo());
         $this->assertEquals(7, $dateInterval->daysRangeLength());
     }

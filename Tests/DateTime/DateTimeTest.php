@@ -2,6 +2,7 @@
 
 namespace Tests\DateTime;
 
+use DateInterval;
 use DateTime;
 
 class DateTimeTest extends \PHPUnit_Framework_TestCase
@@ -16,7 +17,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     {
         $dateTime = new DateTime("May 5, 1953");
         $intervalSpec = "P7D";
-        $interval = new \DateInterval($intervalSpec);
+        $interval = new DateInterval($intervalSpec);
         $dateTime->add($interval);
         $this->assertEquals("12/05/1953", $dateTime->format("d/m/Y"));
     }
