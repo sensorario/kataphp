@@ -11,17 +11,19 @@ class Entity implements StateMachinable
     const WAITING = 'waiting';
     const CLOSED = 'closed';
 
+    private $statuses = [
+        self::CREATED,
+        self::PENDING,
+        self::WAITING,
+        self::CLOSED,
+    ];
+
     /**
      * @return array
      */
     public function statusList()
     {
-        return [
-            self::CREATED,
-            self::PENDING,
-            self::WAITING,
-            self::CLOSED,
-        ];
+        return $this->statuses;
     }
 
     /**
@@ -29,7 +31,7 @@ class Entity implements StateMachinable
      */
     public function countStatuses()
     {
-        return count($this->statusList());
+        return count($this->statuses);
     }
 
     /**
@@ -37,6 +39,6 @@ class Entity implements StateMachinable
      */
     public function defaultState()
     {
-        return self::CREATED;
+        return $this->statuses[0];
     }
 }
