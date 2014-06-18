@@ -63,6 +63,8 @@ class Entity implements StateMachinable
     public function becomePending()
     {
         $this->currentStatus = self::PENDING;
+
+        return $this;
     }
 
     /**
@@ -71,5 +73,7 @@ class Entity implements StateMachinable
     public function close()
     {
         $this->currentStatus = self::CLOSED;
+
+        return $this;
     }
 }

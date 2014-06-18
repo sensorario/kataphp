@@ -32,16 +32,23 @@ class EntityStatusChangeTest extends PHPUnit_Framework_TestCase
 
     public function testStatusChangeAndDefaultStatusWontChange()
     {
-        $entity = new Entity();
-
-        $entity->becomeWaiting();
+        $entity = (new Entity())
+            ->becomeWaiting();
         $this->assertEquals(Entity::WAITING, $entity->status());
         $this->assertEquals(Entity::CREATED, $entity->defaultState());
+    }
 
-        $entity->becomePending();
-        $this->assertEquals(Entity::PENDING, $entity->status());
-
-        $entity->close();
+    public function testEntityCanBeClosed()
+    {
+        $entity = (new Entity())
+            ->close();
         $this->assertEquals(Entity::CLOSED, $entity->status());
+    }
+
+    public function testEntityCanBePending()
+    {
+        $entity = (new Entity())
+            ->becomePending();
+        $this->assertEquals(Entity::PENDING, $entity->status());
     }
 }
