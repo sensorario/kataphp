@@ -56,10 +56,13 @@ class Player
 
     private function sumNextShotPoints($i, $nextShotPoints = 0)
     {
-        if (!empty($this->frames[$i][0])) {
+        $isNotTerzultimo = !empty($this->frames[$i][0]);
+        if ($isNotTerzultimo) {
             $nextShotPoints = $this->frames[$i][0] + $this->frames[$i][1];
-            if ($nextShotPoints == 10 && $this->frames[$i][1] == 0) {
-                if (!empty($this->frames[$i + 1])) {
+            $isStrike = $nextShotPoints == 10 && $this->frames[$i][1] == 0;
+            if ($isStrike) {
+                $isNotPenultimo = !empty($this->frames[$i + 1]);
+                if ($isNotPenultimo) {
                     $nextShotPoints += $this->frames[$i + 1][0] + $this->frames[$i + 1][1];
                 }
             }

@@ -117,4 +117,11 @@ class PlayerTest extends PHPUnit_Framework_TestCase
             [[[10, 0], [10, 0], [10, 0], [2, 3], [0, 10], [0, 10], [3, 7], [7, 3]], 125,],
         ];
     }
+
+    public function testSomethig()
+    {
+        $player = new Player();
+        $player->playFrame([2, 5]);
+        $this->assertEquals(7, $player->score());
+    }
 }
