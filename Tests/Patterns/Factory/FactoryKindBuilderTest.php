@@ -4,8 +4,9 @@ namespace Tests\Patterns\Factory;
 
 use Patterns\Factory\FactoryKindBuilder;
 use Patterns\Factory\Interfaces\KindKids;
+use PHPUnit_Framework_TestCase;
 
-class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
+class FactoryKindBuilderTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider kidsClass
@@ -20,8 +21,8 @@ class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
     public function kidsClass()
     {
         return [
-            ['dog', 'Patterns\Factory\Kids\Dog', 'abbaia'],
-            ['horse', 'Patterns\Factory\Kids\Horse', 'nitrisce'],
+            [FactoryKindBuilder::DOG, FactoryKindBuilder::PATTERNS_FACTORY_KIDS_DOG, FactoryKindBuilder::BARK],
+            [FactoryKindBuilder::HORSE, FactoryKindBuilder::PATTERNS_FACTORY_KIDS_HORSE, FactoryKindBuilder::SOME_VERSE],
         ];
     }
 
@@ -37,8 +38,8 @@ class FactoryKindBuilderTest extends \PHPUnit_Framework_TestCase
     public function kidsImplements()
     {
         return [
-            ['dog'],
-            ['horse'],
+            [FactoryKindBuilder::DOG],
+            [FactoryKindBuilder::HORSE],
         ];
     }
 }
