@@ -2,8 +2,16 @@
 
 namespace Tests\FizzBuzz;
 
-use \PHPUnit_Framework_TestCase;
 use FizzBuzz\FizzBuzz;
+use PHPUnit_Framework_TestCase;
+
+function fizzBuzz($n)
+{
+    for ($o = '', $i = 0; $i < 4; $i++)
+        $o .= $n % [3, 5, 7, 10][$i] == 0
+            ? ['Fizz', 'Buzz', 'Suzz', 'Mazz'][$i] : '';
+    return $o;
+}
 
 class FizzBuzzTest extends PHPUnit_Framework_TestCase
 {
@@ -13,6 +21,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     public function testFizzBuzz($input, $output)
     {
         $this->assertEquals($output, (new FizzBuzz($input))->output());
+        $this->assertEquals($output, fizzBuzz($input));
     }
 
     public function inputs()
@@ -24,8 +33,8 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
             [6, 'Fizz'],
             [30, 'FizzBuzzMazz'],
             [10, 'BuzzMazz'],
-            [3*5*10*7, 'FizzBuzzSuttMazz'],
-            [3*7, 'FizzSutt'],
+            [3 * 5 * 10 * 7, 'FizzBuzzSuzzMazz'],
+            [3 * 7, 'FizzSuzz'],
         ];
     }
 }
