@@ -16,6 +16,9 @@ class IsSubClassOfTest extends \PHPUnit_Framework_TestCase
 
     public function testSubClassGood()
     {
-        $this->assertTrue(is_subclass_of('Snippets\IstanceOf\SubClassOne', 'Snippets\IstanceOf\SuperClassOne'));
+        $subClassOne = 'Snippets\IstanceOf\SubClassOne';
+        $superClassOne = 'Snippets\IstanceOf\SuperClassOne';
+
+        $this->assertTrue(is_subclass_of($subClassOne, $superClassOne));
     }
 }
