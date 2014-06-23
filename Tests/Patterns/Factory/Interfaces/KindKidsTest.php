@@ -15,6 +15,6 @@ class KindKidsTest extends \PHPUnit_Framework_TestCase
     public function testHasMethodsDefinition()
     {
         $obj = new ReflectionClass('Patterns\Factory\Interfaces\KindKids');
-        $this->assertTrue($obj->hasMethod('verso'));
+        $this->assertTrue($obj->hasMethod('verse'));
     }
 }

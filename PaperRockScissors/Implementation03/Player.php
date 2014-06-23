@@ -16,9 +16,11 @@ class Player
     }
 
     /**
+     * @param $choice
      * @return Player
+     * @throws InvalidArgumentException
      */
-    public static function createFromChoice($choice)
+    public static function createFromChoices($choice)
     {
         $scissors = Player::CHOICE_SCISSORS;
         $paper = Player::CHOICE_PAPER;

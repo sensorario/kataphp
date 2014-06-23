@@ -11,11 +11,10 @@ class FactoryKindBuilderTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider kidsClass
      */
-    public function testBuilder($name, $className, $methodWillReturn)
+    public function testBuilder($name, $className)
     {
         $generatedClass = FactoryKindBuilder::build($name);
         $this->assertTrue(get_class($generatedClass) === $className);
-        $this->assertTrue($generatedClass->verso() === $methodWillReturn);
     }
 
     public function kidsClass()

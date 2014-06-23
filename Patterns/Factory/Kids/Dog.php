@@ -7,7 +7,7 @@ use Patterns\Factory\Interfaces\KindKids;
 
 class Dog implements KindKids
 {
-    public function verso()
+    public function verse()
     {
         return FactoryKindBuilder::BARK;
     }
