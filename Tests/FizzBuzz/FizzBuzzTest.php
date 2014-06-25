@@ -110,8 +110,10 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 
         $reflectionProperty->setValue($fizz, 0);
         $this->assertEquals('Fizz', $fizz->getWord());
+        $this->assertEquals('FizzBuzzSuzzMazz', $fizz->output());
 
         $reflectionProperty->setValue($fizz, 1);
         $this->assertEquals('Buzz', $fizz->getWord());
+        $this->assertEquals('FizzBuzzSuzzMazz', $fizz->output());
     }
 }

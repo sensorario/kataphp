@@ -12,6 +12,8 @@ class FizzBuzz implements FizzBuzzInterface
 
     public function output()
     {
+        $this->output = '';
+
         for ($this->i = 0; $this->i < self::countMatch(); $this->i++) {
             if ($this->isNumberDividableByDivisor()) {
                 $this->output .= self::getWords()[$this->i];
