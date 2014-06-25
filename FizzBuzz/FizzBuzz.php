@@ -2,7 +2,9 @@
 
 namespace FizzBuzz;
 
-class FizzBuzz
+use FizzBuzz\Interfaces\FizzBuzz as FizzBuzzInterface;
+
+class FizzBuzz implements FizzBuzzInterface
 {
     private $output;
 
@@ -17,5 +19,10 @@ class FizzBuzz
     public function output()
     {
         return $this->output;
+    }
+
+    public static function getDivisors()
+    {
+        return [3, 5, 7, 10];
     }
 }

@@ -5,7 +5,7 @@ namespace Tests\FizzBuzz;
 use FizzBuzz\FizzBuzz;
 use PHPUnit_Framework_TestCase;
 
-function fizzBuzz($n)
+function funFizzBuzz($n)
 {
     for ($o = '', $i = 0; $i < 4; $i++)
         $o .= $n % [3, 5, 7, 10][$i] == 0
@@ -21,7 +21,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     public function testFizzBuzz($input, $output)
     {
         $this->assertEquals($output, (new FizzBuzz($input))->output());
-        $this->assertEquals($output, fizzBuzz($input));
+        $this->assertEquals($output, funFizzBuzz($input));
     }
 
     public function inputs()
@@ -36,5 +36,10 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
             [3 * 5 * 10 * 7, 'FizzBuzzSuzzMazz'],
             [3 * 7, 'FizzSuzz'],
         ];
+    }
+
+    public function testDivisorsList()
+    {
+        $this->assertEquals([3, 5, 7, 10], FizzBuzz::getDivisors());
     }
 }
