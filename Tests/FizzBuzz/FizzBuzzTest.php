@@ -50,7 +50,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 
     public function testSetters()
     {
-        $fizz = (new FizzBuzz(666))
+        $fizz = (new FizzBuzz())
             ->setNumber(666);
 
         $this->assertTrue($fizz instanceof FizzBuzz);
