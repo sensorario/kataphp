@@ -13,7 +13,7 @@ class FizzBuzz implements FizzBuzzInterface
     {
         for ($i = 0; $i < 4; $i++) {
             $this->output .= $this->number % self::getDivisors()[$i] == 0
-                ? ['Fizz', 'Buzz', 'Suzz', 'Mazz'][$i] : '';
+                ? self::getWords()[$i] : '';
         }
 
         return $this->output;
