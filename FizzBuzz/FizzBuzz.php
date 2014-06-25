@@ -7,17 +7,20 @@ use FizzBuzz\Interfaces\FizzBuzz as FizzBuzzInterface;
 class FizzBuzz implements FizzBuzzInterface
 {
     private $output;
+    private $number;
 
-    public function __construct($number)
+    public function __construct($number = null)
     {
-        for ($i = 0; $i < 4; $i++) {
-            $this->output .= $number % self::getDivisors()[$i] == 0
-                ? ['Fizz', 'Buzz', 'Suzz', 'Mazz'][$i] : '';
-        }
+        $this->number = $number;
     }
 
     public function output()
     {
+        for ($i = 0; $i < 4; $i++) {
+            $this->output .= $this->number % self::getDivisors()[$i] == 0
+                ? ['Fizz', 'Buzz', 'Suzz', 'Mazz'][$i] : '';
+        }
+
         return $this->output;
     }
 
@@ -29,5 +32,17 @@ class FizzBuzz implements FizzBuzzInterface
     public static function getWords()
     {
         return ['Fizz', 'Buzz', 'Suzz', 'Mazz'];
+    }
+
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    public function getNumber()
+    {
+        return $this->number;
     }
 }
