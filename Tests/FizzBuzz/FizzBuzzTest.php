@@ -56,4 +56,16 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($fizz instanceof FizzBuzz);
         $this->assertEquals(666, $fizz->getNumber());
     }
+
+    public function testMatch()
+    {
+        $match = [
+            3 => 'Fizz',
+            5 => 'Buzz',
+            7 => 'Suzz',
+            10 => 'Mazz',
+        ];
+
+        $this->assertEquals($match, FizzBuzz::match());
+    }
 }

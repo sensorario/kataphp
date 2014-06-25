@@ -11,4 +11,6 @@ interface FizzBuzz
     public function setNumber($number);
 
     public function getNumber();
+
+    public static function match();
 }

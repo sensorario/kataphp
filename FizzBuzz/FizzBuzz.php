@@ -40,4 +40,14 @@ class FizzBuzz implements FizzBuzzInterface
     {
         return $this->number;
     }
+
+    public static function match()
+    {
+        return [
+            3 => 'Fizz',
+            5 => 'Buzz',
+            7 => 'Suzz',
+            10 => 'Mazz',
+        ];
+    }
 }
