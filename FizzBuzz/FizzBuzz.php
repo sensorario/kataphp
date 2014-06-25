@@ -11,7 +11,7 @@ class FizzBuzz implements FizzBuzzInterface
     public function __construct($number)
     {
         for ($i = 0; $i < 4; $i++) {
-            $this->output .= $number % [3, 5, 7, 10][$i] == 0
+            $this->output .= $number % self::getDivisors()[$i] == 0
                 ? ['Fizz', 'Buzz', 'Suzz', 'Mazz'][$i] : '';
         }
     }
@@ -24,5 +24,10 @@ class FizzBuzz implements FizzBuzzInterface
     public static function getDivisors()
     {
         return [3, 5, 7, 10];
+    }
+
+    public static function getWords()
+    {
+        return ['Fizz', 'Buzz', 'Suzz', 'Mazz'];
     }
 }

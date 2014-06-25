@@ -42,4 +42,8 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals([3, 5, 7, 10], FizzBuzz::getDivisors());
     }
+
+    public function testWordList(){
+        $this->assertEquals(['Fizz', 'Buzz', 'Suzz', 'Mazz'], FizzBuzz::getWords());
+    }
 }
