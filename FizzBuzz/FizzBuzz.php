@@ -8,12 +8,14 @@ class FizzBuzz implements FizzBuzzInterface
 {
     private $output;
     private $number;
+    private $i;
 
     public function output()
     {
-        for ($i = 0; $i < count(self::match()); $i++) {
-            $this->output .= $this->number % self::getDivisors()[$i] == 0
-                ? self::getWords()[$i] : '';
+        for ($this->i = 0; $this->i < count(self::match()); $this->i++) {
+            if ($this->number % self::getDivisors()[$this->i] == 0) {
+                $this->output .= self::getWords()[$this->i];
+            }
         }
 
         return $this->output;
