@@ -4,6 +4,8 @@ namespace Tests\FizzBuzz;
 
 use FizzBuzz\FizzBuzz;
 use PHPUnit_Framework_TestCase;
+use ReflectionClass;
+use ReflectionObject;
 
 function funFizzBuzz($n)
 {
@@ -67,5 +69,49 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
         ];
 
         $this->assertEquals($match, FizzBuzz::match());
+        $this->assertEquals(count($match), FizzBuzz::countMatch());
+    }
+
+    public function testGetDivisor()
+    {
+        $fizz = new FizzBuzz();
+
+        $reflectionObject = new ReflectionObject($fizz);
+        $reflectionProperty = $reflectionObject->getProperty('i');
+        $reflectionProperty->setAccessible(true);
+
+        $reflectionProperty->setValue($fizz, 0);
+        $this->assertEquals(3, $fizz->getDivisor());
+
+        $reflectionProperty->setValue($fizz, 1);
+        $this->assertEquals(5, $fizz->getDivisor());
+    }
+
+    public function testIsDividable()
+    {
+        $fizz = new FizzBuzz();
+        $fizz->setNumber(3);
+
+        $reflectionObject = new ReflectionObject($fizz);
+        $reflectionProperty = $reflectionObject->getProperty('i');
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($fizz, 0);
+
+        $this->assertTrue($fizz->isNumberDividableByDivisor());
+    }
+
+    public function testGetWord()
+    {
+        $fizz = new FizzBuzz();
+
+        $reflectionObject = new ReflectionObject($fizz);
+        $reflectionProperty = $reflectionObject->getProperty('i');
+        $reflectionProperty->setAccessible(true);
+
+        $reflectionProperty->setValue($fizz, 0);
+        $this->assertEquals('Fizz', $fizz->getWord());
+
+        $reflectionProperty->setValue($fizz, 1);
+        $this->assertEquals('Buzz', $fizz->getWord());
     }
 }

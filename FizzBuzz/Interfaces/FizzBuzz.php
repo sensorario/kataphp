@@ -22,4 +22,12 @@ interface FizzBuzz
     public function getNumber();
 
     public static function match();
+
+    public function getDivisor();
+
+    public function isNumberDividableByDivisor();
+
+    public static function countMatch();
+
+    public function getWord();
 }

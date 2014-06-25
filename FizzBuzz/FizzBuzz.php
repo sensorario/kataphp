@@ -12,8 +12,8 @@ class FizzBuzz implements FizzBuzzInterface
 
     public function output()
     {
-        for ($this->i = 0; $this->i < count(self::match()); $this->i++) {
-            if ($this->number % self::getDivisors()[$this->i] == 0) {
+        for ($this->i = 0; $this->i < self::countMatch(); $this->i++) {
+            if ($this->isNumberDividableByDivisor()) {
                 $this->output .= self::getWords()[$this->i];
             }
         }
@@ -51,5 +51,25 @@ class FizzBuzz implements FizzBuzzInterface
             self::SUZZ_KEY => self::SUZZ,
             self::MAZZ_KEY => self::MAZZ,
         ];
+    }
+
+    public function getDivisor()
+    {
+        return self::getDivisors()[$this->i];
+    }
+
+    public function isNumberDividableByDivisor()
+    {
+        return $this->getNumber() % $this->getDivisor() == 0;
+    }
+
+    public static function countMatch()
+    {
+        return count(self::match());
+    }
+
+    public function getWord()
+    {
+        return self::getWords()[$this->i];
     }
 }
