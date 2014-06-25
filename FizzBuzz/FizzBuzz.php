@@ -9,11 +9,6 @@ class FizzBuzz implements FizzBuzzInterface
     private $output;
     private $number;
 
-    public function __construct($number = null)
-    {
-        $this->number = $number;
-    }
-
     public function output()
     {
         for ($i = 0; $i < 4; $i++) {

@@ -20,7 +20,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
      */
     public function testFizzBuzz($input, $output)
     {
-        $this->assertEquals($output, (new FizzBuzz($input))->output());
+        $this->assertEquals($output, (new FizzBuzz())->setNumber($input)->output());
         $this->assertEquals($output, funFizzBuzz($input));
     }
 
@@ -50,7 +50,7 @@ class FizzBuzzTest extends PHPUnit_Framework_TestCase
 
     public function testSetters()
     {
-        $fizz = (new FizzBuzz())
+        $fizz = (new FizzBuzz(666))
             ->setNumber(666);
 
         $this->assertTrue($fizz instanceof FizzBuzz);
