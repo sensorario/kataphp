@@ -21,12 +21,12 @@ class FizzBuzz implements FizzBuzzInterface
 
     public static function getDivisors()
     {
-        return [3, 5, 7, 10];
+        return [self::FIZZ_KEY, self::BUZZ_KEY, self::SUZZ_KEY, self::MAZZ_KEY];
     }
 
     public static function getWords()
     {
-        return ['Fizz', 'Buzz', 'Suzz', 'Mazz'];
+        return [self::FIZZ, self::BUZZ, self::SUZZ, self::MAZZ];
     }
 
     public function setNumber($number)
@@ -44,10 +44,10 @@ class FizzBuzz implements FizzBuzzInterface
     public static function match()
     {
         return [
-            3 => 'Fizz',
-            5 => 'Buzz',
-            7 => 'Suzz',
-            10 => 'Mazz',
+            self::FIZZ_KEY => self::FIZZ,
+            self::BUZZ_KEY => self::BUZZ,
+            self::SUZZ_KEY => self::SUZZ,
+            self::MAZZ_KEY => self::MAZZ,
         ];
     }
 }
