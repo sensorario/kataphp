@@ -1,6 +1,8 @@
 <?php
 namespace Sensorario\ValueObjects;
 
+use SimpleXmlElement;
+
 final class UltimateSpeaker
     extends SensorarioValueObject
 {
@@ -20,9 +22,25 @@ final class UltimateSpeaker
         ));
     }
 
+    public function surname()
+    {
+        return $this->params['surname'];
+    }
+
     public function name()
     {
         return $this->params['name'];
     }
-}
 
+    public function jsonSerialize()
+    {
+        return json_encode($this->params);
+    }
+
+    public function xmlSerialize()
+    {
+        return (new SimpleXmlElement('<?xml version="1.0" ?><root />'))
+            ->addChild('name',    $this->name())
+            ->addChild('surname', $this->surname());
+    }
+}

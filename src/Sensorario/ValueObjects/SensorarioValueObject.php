@@ -2,8 +2,10 @@
 namespace Sensorario\ValueObjects;
 
 use RuntimeException;
+use JsonSerializable;
 
 abstract class SensorarioValueObject
+    implements JsonSerializable
 {
     protected $params;
 
