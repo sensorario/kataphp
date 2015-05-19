@@ -32,11 +32,6 @@ final class UltimateSpeaker
         return $this->params['name'];
     }
 
-    public function jsonSerialize()
-    {
-        return json_encode($this->params);
-    }
-
     public function xmlSerialize()
     {
         return (new SimpleXmlElement('<?xml version="1.0" ?><root />'))

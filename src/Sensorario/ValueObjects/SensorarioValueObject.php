@@ -39,5 +39,10 @@ abstract class SensorarioValueObject
 
         return new static($params);
     }
+
+    public function jsonSerialize()
+    {
+        return json_encode($this->params);
+    }
 }
 
