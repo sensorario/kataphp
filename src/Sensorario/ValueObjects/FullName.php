@@ -51,4 +51,14 @@ class FullName
             $this->surname
         );
     }
+
+    public function withOtherNickName(FullName $other)
+    {
+        return $this->withMiddleName($other->middleName());
+    }
+
+    public function middleName()
+    {
+        return $this->middleName;
+    }
 }
