@@ -39,6 +39,20 @@ class FullNameTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($originalDemo === $demo);
     }
 
+    public function testImmutabilityIsRespectedCloningAValueObject()
+    {
+        $demo = FullName::withNameMiddleSurname(
+            new StringLiteral("Simone"),
+            new StringLiteral("Demo"),
+            new StringLiteral("Gentili")
+        );
+
+        $sensorario = clone $demo;
+
+        $this->assertTrue($demo == $sensorario);
+        $this->assertFalse($demo === $sensorario);
+    }
+
     public function testSideEffectFree()
     {
         $demo = FullName::withNameMiddleSurname(
