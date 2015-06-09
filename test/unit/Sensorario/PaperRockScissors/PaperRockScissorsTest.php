@@ -8,10 +8,10 @@ final class PaperRockScissorsTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider playerChoices
      */
-    public function testRockWinScissorsWinPaper($win, $first, $second)
+    public function testRockWinScissorsWinPaper($firstWins, $first, $second)
     {
         $this->assertEquals(
-            $win,
+            $firstWins,
             $first->winVersus($second)
         );
     }
@@ -19,12 +19,12 @@ final class PaperRockScissorsTest extends PHPUnit_Framework_TestCase
     public function playerChoices()
     {
         return [
-            [true, new Paper(), new Rock()],
             [false, new Paper(), new Scissors()],
-            [true, new Scissors(), new Paper()],
-            [false, new Scissors(), new Rock()],
-            [true, new Rock(), new Scissors()],
             [false, new Rock(), new Paper()],
+            [false, new Scissors(), new Rock()],
+            [true, new Paper(), new Rock()],
+            [true, new Rock(), new Scissors()],
+            [true, new Scissors(), new Paper()],
         ];
     }
 }
