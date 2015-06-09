@@ -6,7 +6,7 @@ use SimpleXmlElement;
 final class UltimateSpeaker
     extends SensorarioValueObject
 {
-    public function mandatoryAttributes()
+    public static function mandatoryAttributes()
     {
         return [
             'name',

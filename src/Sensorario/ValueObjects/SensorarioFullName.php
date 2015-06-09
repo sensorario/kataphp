@@ -4,7 +4,7 @@ namespace Sensorario\ValueObjects;
 final class SensorarioFullName
     extends SensorarioValueObject
 {
-    public function mandatoryAttributes()
+    public static function mandatoryAttributes()
     {
         return [
             'name',
@@ -12,7 +12,7 @@ final class SensorarioFullName
         ];
     }
 
-    public function withNameSurname(array $params)
+    public static function withNameSurname(array $params)
     {
         return new self([
             'name'    => $params['name'],

@@ -10,7 +10,10 @@ abstract class SensorarioValueObject
     protected $params;
 
     /** @return array */
-    abstract public function mandatoryAttributes();
+    public static function mandatoryAttributes()
+    {
+        return [];
+    }
 
     protected function __construct(array $params = [])
     {
