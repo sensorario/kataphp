@@ -28,27 +28,3 @@ final class PaperRockScissorsTest extends PHPUnit_Framework_TestCase
         ];
     }
 }
-
-final class Paper implements Choice
-{
-    public function winVersus(Choice $choise)
-    {
-        return $choise == new Rock();
-    }
-}
-
-final class Rock implements Choice
-{
-    public function winVersus(Choice $choise)
-    {
-        return $choise == new Scissors();
-    }
-}
-
-final class Scissors implements Choice
-{
-    public function winVersus(Choice $choise)
-    {
-        return $choise == new Paper();
-    }
-}
