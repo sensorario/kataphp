@@ -15,10 +15,12 @@ class StringAnalyzer
             );
         }
 
-        $this->value = [
+        $genericArray = [
             'a' => 'uno',
             'b' => 'due',
-        ][current(explode('/', $string))];
+        ];
+
+        $this->value = $genericArray[current(explode('/', $string))];
     }
 
     public function value()
