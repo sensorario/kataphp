@@ -3,35 +3,34 @@ namespace Sensorario\DiamondKata;
 
 final class DiamondKata
 {
-    const EOL = "\n";
+    const EOL    = "\n";
+    const FILLER = " ";
 
-    private $params;
+    private $input;
 
-    private function __construct(array $params)
+    private function __construct($input)
     {
-        $this->params['input'] = $params['input'];
+        $this->input = $input;
     }
 
     public static function createFrom($input)
     {
-        return new self([
-            'input' => $input
-        ]);
+        return new self($input);
     }
 
     public function output()
     {
         for ($i = 0; $i <= $this->size(); $i++) {
-            $base = str_pad(" ", ($i*2)+1);
+            $base = str_pad(self::FILLER, ($i*2)+1);
             $base[0] = chr(65 + $i);
-            $base[strlen($base)-1] = chr(65 + $i);
+            $base[strlen($base)-1] = $base[0];
 
             $lines[$i] = str_pad(
                 $base,
                 $this->size(),
-                " ",
+                self::FILLER,
                 STR_PAD_BOTH
-            ) . "\n";
+            ) . self::EOL;
         }
 
         return $this->buildOutput($lines);
@@ -56,6 +55,6 @@ final class DiamondKata
 
     public function size()
     {
-        return (ord($this->params['input']) - 65) * 2 + 1;
+        return (ord($this->input) - 65) * 2 + 1;
     }
 }
