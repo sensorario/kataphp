@@ -16,7 +16,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             1,
-            $matrix->size()
+            $matrix->countLines()
         );
     }
 
@@ -33,7 +33,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             3,
-            $matrix->size()
+            $matrix->countLines()
         );
     }
 
@@ -52,7 +52,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             5,
-            $matrix->size()
+            $matrix->countLines()
         );
     }
 
@@ -73,7 +73,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             7,
-            $matrix->size()
+            $matrix->countLines()
         );
     }
 }
