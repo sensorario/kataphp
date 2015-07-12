@@ -13,7 +13,7 @@ final class DiamondKata
         $this->input = $input;
     }
 
-    public static function createFrom($input)
+    public static function withChar($input)
     {
         return new self($input);
     }

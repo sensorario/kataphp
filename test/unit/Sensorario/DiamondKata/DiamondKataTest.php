@@ -7,7 +7,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 {
     public function testOneDimentionalMatrix()
     {
-        $matrix = DiamondKata::createFrom('A');
+        $matrix = DiamondKata::withChar('A');
 
         $this->assertEquals(
             "A\n",
@@ -22,7 +22,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
     public function testOutputWithBAsInput()
     {
-        $matrix = DiamondKata::createFrom('B');
+        $matrix = DiamondKata::withChar('B');
 
         $this->assertEquals(
             " A \n".
@@ -39,7 +39,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
     public function testOutputWithCAsInput()
     {
-        $matrix = DiamondKata::createFrom('C');
+        $matrix = DiamondKata::withChar('C');
 
         $this->assertEquals(
             "  A  \n".
@@ -58,7 +58,7 @@ final class DiamondKataTest extends PHPUnit_Framework_TestCase
 
     public function test()
     {
-        $matrix = DiamondKata::createFrom('D');
+        $matrix = DiamondKata::withChar('D');
 
         $this->assertEquals(
             "   A   \n".
