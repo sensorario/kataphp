@@ -48,8 +48,10 @@ final class DiamondKata
         $what   = ceil($countLines / 2);
 
         for ($charPosition = 0; $charPosition < $countLines; $charPosition++) {
+            $centerOfTheLine = $countLines/2;
+
             $output .= $lines[
-                ($charPosition < $countLines/2)
+                ($charPosition < $centerOfTheLine)
                 ? ($charPosition % $what)
                 : ($what-2) - ($charPosition % $what)
             ];
